@@ -3,6 +3,7 @@ import { getProducts } from "../services/productService";
 import { Product } from "../types/Product";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import "./ECommerce.css"; // Make sure to import the CSS
 
 export default function ECommerce() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -80,19 +81,7 @@ export default function ECommerce() {
           }}
         >
           {currentProducts.map((p: Product) => (
-            <div
-              key={p._id}
-              style={{
-                border: "1px solid #ddd",
-                borderRadius: "10px",
-                padding: "15px",
-                boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
-                background: "white",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
+            <div key={p._id} className="product-card">
               {p.image1Url && (
                 <img
                   src={p.image1Url}

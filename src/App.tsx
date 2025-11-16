@@ -47,7 +47,7 @@ function App() {
         />
 
         {/* Public E-Commerce Page */}
-        <Route path="/shop" element={<ECommerce />} />
+        <Route path="/brandnew" element={<ECommerce />} />
 
         {/* Catch-all: redirect to Home */}
         <Route path="*" element={<Navigate to="/" replace />} />

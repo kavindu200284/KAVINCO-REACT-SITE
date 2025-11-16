@@ -27,7 +27,7 @@ export default function Header() {
               Home
             </Link>
             <Link
-              to="/shop"
+              to="/brandnew"
               className="font-semibold hover:text-gray-100 transition-colors font-medium"
             >
               Brand New
@@ -38,12 +38,7 @@ export default function Header() {
             >
               Used
             </Link>
-            <Link
-              to="/tools"
-              className="font-semibold hover:text-gray-100 transition-colors font-medium"
-            >
-              Tools
-            </Link>
+            
             <Link
               to="/Ecommerce"
               className="font-semibold hover:text-gray-100 transition-colors font-medium"
@@ -56,6 +51,8 @@ export default function Header() {
             >
               Blog
             </Link>
+            
+            {/*
             <Link
               to="/login"
               className="flex items-center space-x-2 font-semibold hover:text-gray-100 transition-colors"
@@ -70,6 +67,8 @@ export default function Header() {
               <UserPlus className="w-5 h-5" />
               <span>Sign Up</span>
             </Link>
+            */}
+            
           </nav>
 
           {/* --- MOBILE MENU BUTTON --- */}
