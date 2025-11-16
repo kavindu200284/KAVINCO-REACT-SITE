@@ -27,7 +27,7 @@ export default function Header() {
               Home
             </Link>
             <Link
-              to="/brandnew"
+              to="/shop"
               className="font-semibold hover:text-gray-100 transition-colors font-medium"
             >
               Brand New
@@ -45,7 +45,7 @@ export default function Header() {
               Tools
             </Link>
             <Link
-              to="/shop"
+              to="/Ecommerce"
               className="font-semibold hover:text-gray-100 transition-colors font-medium"
             >
               Shop
