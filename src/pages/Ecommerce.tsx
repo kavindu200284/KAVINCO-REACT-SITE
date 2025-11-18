@@ -81,7 +81,23 @@ export default function ECommerce() {
           }}
         >
           {currentProducts.map((p: Product) => (
-            <div key={p._id} className="product-card">
+            <div key={p._id} className="product-card" style={{ position: "relative" }}>
+              {/* Sri Lanka Flag */}
+              {p.countryOfOrigin &&
+                p.countryOfOrigin.toLowerCase() === "sri lanka" && (
+                  <img
+                    src="/flag.png" // Put your flag.png in public folder
+                    alt="Sri Lanka"
+                    style={{
+                      position: "absolute",
+                      top: "-30px",
+                      right: "-70px",
+                      width: "150px",
+                      height: "135px",
+                    }}
+                  />
+                )}
+
               {p.image1Url && (
                 <img
                   src={p.image1Url}

@@ -109,7 +109,7 @@ export default function Header() {
               </Link>
             ))}
 
-            <Link
+            {/*<Link
               to="/login"
               className="flex items-center space-x-2 hover:text-gray-100 transition-colors"
               onClick={() => setMobileOpen(false)}
@@ -125,6 +125,7 @@ export default function Header() {
               <UserPlus className="w-5 h-5" />
               <span>Sign Up</span>
             </Link>
+            */}
           </div>
         </div>
       </div>
