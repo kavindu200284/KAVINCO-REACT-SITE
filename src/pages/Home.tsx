@@ -34,65 +34,65 @@ export default function Home() {
 
   const services = [
     {
-      title: "Product Management",
-      type: "Software Service",
+      title: "Industrial Machinery Repair & Maintenance,",
+      type: "",
       description:
-        "Manage your entire product catalog efficiently with our all-in-one platform.",
+        "From downtime to uptime—we deliver expert care that keeps your industry moving.",
       image:
-        "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://us-east-1.console.aws.amazon.com/s3/object/kavinco?region=us-east-1&prefix=Industrial-machinery-repair-services.jpg",
     },
     {
-      title: "Inventory Tracking",
-      type: "Warehouse Solution",
+      title: "Customized Machinery Manufacturing",
+      type: "",
       description:
-        "Track your inventory and receive smart alerts when stock runs low.",
+        "From idea to implementation—we design machines that drive unstoppable growth.",
       image:
         "https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
     {
-      title: "Analytics & Reports",
-      type: "Business Intelligence",
+      title: "Machinery Modification",
+      type: "",
       description:
-        "Make smart decisions with real-time analytics and advanced reporting tools.",
+        "From old design to new power—we upgrade and modify machinery to match modern demands.",
       image:
         "https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
     {
-      title: "Machine Maintenance",
-      type: "Industrial Service",
+      title: "Spare Parts Fabrication",
+      type: "",
       description:
-        "Get your machines running smoothly with our expert maintenance services.",
+        "From wear to repair—we craft custom spare parts that keep your machines running strong.",
       image:
         "https://images.pexels.com/photos/3856623/pexels-photo-3856623.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
     {
-      title: "Custom Fabrication",
-      type: "Manufacturing Service",
+      title: "Machinery Relocation & Transport:",
+      type: "",
       description:
-        "We design and build customized parts to fit your exact industrial needs.",
+        "Seamless relocation, secure transport—keeping your operations on track.",
       image:
         "https://images.pexels.com/photos/3861851/pexels-photo-3861851.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
     {
-      title: "Automation & PLC Systems",
-      type: "Engineering Service",
+      title: "Machinery & Machinery Parts Import",
+      type: "",
       description:
-        "Implement automation and control systems for better efficiency and accuracy.",
+        "High-quality machinery and parts imported to keep your business moving.",
       image:
         "https://images.pexels.com/photos/4488660/pexels-photo-4488660.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
   ];
 
   const youtubeVideos = [
-    "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    "https://www.youtube.com/embed/3fumBcKC6RE",
-    "https://www.youtube.com/embed/ZH2DGS3sJ6Y",
-    "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    "https://www.youtube.com/embed/3fumBcKC6RE",
-    "https://www.youtube.com/embed/ZH2DGS3sJ6Y",
-    "https://www.youtube.com/embed/aqz-KE-bpKQ",
-    "https://www.youtube.com/embed/ZH2DGS3sJ6Y",
-  ];
+  "https://www.youtube.com/embed/M6nwTW07PqA",
+  "https://www.youtube.com/embed/eFhwDvz1VRk",
+  "https://www.youtube.com/embed/2xO1Q94r-CA",
+  "https://www.youtube.com/embed/8boBCozzrcE",
+  "https://www.youtube.com/embed/sLtrQAMQHzA",
+  "https://www.youtube.com/embed/5KHrMA0EzeM",
+  "https://www.youtube.com/embed/ypB5tAqBWaI",
+  "https://www.youtube.com/embed/To10oiPby9s"
+];
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -136,7 +136,7 @@ export default function Home() {
               Our Services
             </h2>
             <p className="text-xl text-gray-600">
-              Explore our range of business and industrial solutions
+              Expert services that turn challenges into seamless operations.
             </p>
           </div>
 
@@ -154,7 +154,7 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 </div>
-                <div className="p-6">
+                <div className="p-6 flex flex-col items-center text-center">
                   <span className="text-orange-600 font-semibold uppercase text-sm tracking-wide">
                     {service.type}
                   </span>
@@ -184,7 +184,7 @@ export default function Home() {
         Watch Our Work in Action
       </h2>
       <p className="text-lg text-gray-600">
-        See our products, services, and customer stories
+        Discover what we build, how we do it, and the success stories we power.
       </p>
     </div>
 
