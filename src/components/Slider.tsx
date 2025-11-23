@@ -5,34 +5,45 @@ import { useState, useEffect } from "react";
 export default function Slider() {
   const slides = [
     {
-      id: 1,
-      title: "Build Smarter. Perform Better.",
-      description:
-        "Take your operations to the next level with custom machinery solutions tailored to your unique workflow.",
-      image:
-        "https://kavinco.s3.us-east-1.amazonaws.com/slider-01.jpg",
-      button1: { text: "Explore", link: "/brandnew" },
-      button2: { text: "Learn More", link: "/blog" },
+  id: 1,
+  title: "Build Smarter. Perform Better.",
+  description:
+    "Take your operations to the next level with custom machinery solutions tailored to your unique workflow.",
+  image:
+    "https://kavinco.s3.us-east-1.amazonaws.com/Gemini_Generated_Image_dxd8sxdxd8sxdxd8.png",
+
+  // Button 1 → Opens phone dial pad
+  button1: { 
+    text: "Contact us", 
+    link: "tel:+919876543210"   // ← replace with your real number
+  },
+
+  // Button 2 → Scroll to Services section on homepage
+  button2: { 
+    text: "Learn More", 
+    link: "" 
+  },
     },
+
     {
       id: 2,
-      title: "Industrial Solutions for the Future",
+      title: "Smart Machinery. Stronger Performance.",
       description:
-        "From spare parts to full systems — discover the best equipment for your manufacturing needs.",
+        "Upgrade your operations with modern, reliable, and high-performance machinery built for tomorrow’s industry.",
       image:
-        "https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=1600&q=80",
-      button1: { text: "Shop Now", link: "/shop" },
-      button2: { text: "Contact Us", link: "/contact" },
+        "https://kavinco.s3.us-east-1.amazonaws.com/Gemini_Generated_Image_u5f65uu5f65uu5f6.png",
+      button1: { text: "Shop Now", link: "/brandnew" },
+      button2: { text: "Contact Us", link: "tel:+919876543210" },
     },
     {
       id: 3,
-      title: "Power Up Your Operations",
+      title: "Stronger Builds Start Here — Buy Nails & Nuts You Can Trust",
       description:
-        "Stay ahead with reliable, high-performance machines built for long-term performance and innovation.",
+        "Shop high-quality nails, nuts, and fasteners from our online store and keep every project running smoothly.",
       image:
-        "https://images.unsplash.com/photo-1560185127-6ed189bf02ec?auto=format&fit=crop&w=1600&q=80",
-      button1: { text: "Get Started", link: "/signup" },
-      button2: { text: "Sign In", link: "/login" },
+        "https://kavinco.s3.us-east-1.amazonaws.com/5641d69f75a1bf8c7432288c0e39c327.jpg",
+      button1: { text: "Shop Now", link: "/shop" },
+      button2: { text: "Contact Us", link: "tel:+919876543210" },
     },
   ];
 

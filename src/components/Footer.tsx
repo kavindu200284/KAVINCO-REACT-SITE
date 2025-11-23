@@ -10,20 +10,50 @@ const Footer: React.FC = () => {
         {/* Contact Us */}
         <div>
           <h3 className="text-orange-500 font-semibold text-lg mb-3">Contact Us</h3>
-          <ul className="space-y-3 text-sm">
-            <li className="flex items-center gap-2">
-              <Mail size={16} /> kavincoautomation@gmail.com
-            </li>
-            <li className="flex items-center gap-2">
-              <Phone size={16} /> +94 770414713
-            </li>
-            <li className="flex items-center gap-2">
-              <MessageCircle size={16} /> WhatsApp
-            </li>
-            <li className="flex items-center gap-2">
-              <MapPin size={16} /> 142/8 5th lane, kaldemulla road, kaldemulla, Moratuwa.
-            </li>
-          </ul>
+            <ul className="space-y-3 text-sm">
+              {/* Email */}
+              <li className="flex items-center gap-2">
+                <Mail size={16} /> 
+                <a href="mailto:kavincoautomation@gmail.com" className="hover:underline text-white">
+                  kavincoautomation@gmail.com
+                </a>
+              </li>
+
+              {/* Phone */}
+              <li className="flex items-center gap-2">
+                <Phone size={16} /> 
+                <a href="tel:+94770414713" className="hover:underline text-white">
+                  +94 770414713
+                </a>
+              </li>
+
+              {/* WhatsApp */}
+              <li className="flex items-center gap-2">
+                <MessageCircle size={16} /> 
+                <a
+                  href="https://wa.me/94770414713"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline text-white"
+                >
+                  WhatsApp
+                </a>
+              </li>
+
+              {/* Address / Map */}
+              <li className="flex items-center gap-2">
+                <MapPin size={16} /> 
+                <a
+                  href="https://share.google/4qyFCMKoHqwUCbojS"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline text-white"
+                >
+                  142/8 5th lane, Kaldemulla Road, Kaldemulla, Moratuwa
+                </a>
+              </li>
+            </ul>
+
         </div>
 
         {/* Quick Links */}
@@ -33,7 +63,7 @@ const Footer: React.FC = () => {
             <li><a href="/" className="hover:text-orange-400">Home</a></li>
             <li><a href="/brandnew" className="hover:text-orange-400">Brand New</a></li>
             <li><a href="/used" className="hover:text-orange-400">Used</a></li>
-            <li><a href="/spareparts" className="hover:text-orange-400">Spare Parts</a></li>
+            <li><a href="/Shop" className="hover:text-orange-400">Shop</a></li>
           </ul>
         </div>
 
@@ -41,9 +71,9 @@ const Footer: React.FC = () => {
         <div>
           <h3 className="text-orange-500 font-semibold text-lg mb-3">Follow Us</h3>
           <ul className="space-y-3 text-sm">
-            <li><a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-orange-400">Facebook</a></li>
-            <li><a href="https://youtube.com" target="_blank" rel="noreferrer" className="hover:text-orange-400">YouTube</a></li>
-            <li><a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-orange-400">LinkedIn</a></li>
+            <li><a href="https://www.facebook.com/share/1CU1rcAv3p/" target="_blank" rel="noreferrer" className="hover:text-orange-400">Facebook</a></li>
+            <li><a href="www.youtube.com/@kavinco4761" target="_blank" rel="noreferrer" className="hover:text-orange-400">YouTube</a></li>
+            <li><a href="https://www.linkedin.com/company/kavinco/" target="_blank" rel="noreferrer" className="hover:text-orange-400">LinkedIn</a></li>
           </ul>
         </div>
       </div>
