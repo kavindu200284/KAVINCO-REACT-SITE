@@ -39,7 +39,7 @@ export default function Home() {
       description:
         "From downtime to uptime—we deliver expert care that keeps your industry moving.",
       image:
-        "https://us-east-1.console.aws.amazon.com/s3/object/kavinco?region=us-east-1&prefix=Industrial-machinery-repair-services.jpg",
+        "https://kavinco.s3.us-east-1.amazonaws.com/Industrial-machinery-repair-services.jpg",
     },
     {
       title: "Customized Machinery Manufacturing",
@@ -47,7 +47,7 @@ export default function Home() {
       description:
         "From idea to implementation—we design machines that drive unstoppable growth.",
       image:
-        "https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://kavinco.s3.us-east-1.amazonaws.com/pngtree-spotless-cleanroom-environment-with-transparent-protective-covers-over-precision-machinery-representing-image_19868372.webp",
     },
     {
       title: "Machinery Modification",
@@ -55,7 +55,7 @@ export default function Home() {
       description:
         "From old design to new power—we upgrade and modify machinery to match modern demands.",
       image:
-        "https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://kavinco.s3.us-east-1.amazonaws.com/filling.jpg",
     },
     {
       title: "Spare Parts Fabrication",
@@ -63,7 +63,7 @@ export default function Home() {
       description:
         "From wear to repair—we craft custom spare parts that keep your machines running strong.",
       image:
-        "https://images.pexels.com/photos/3856623/pexels-photo-3856623.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://kavinco.s3.us-east-1.amazonaws.com/pngtree-cnc-machine-working-with-workpiece-on-smart-factory-image_15739298.jpg",
     },
     {
       title: "Machinery Relocation & Transport:",
@@ -71,7 +71,7 @@ export default function Home() {
       description:
         "Seamless relocation, secure transport—keeping your operations on track.",
       image:
-        "https://images.pexels.com/photos/3861851/pexels-photo-3861851.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://kavinco.s3.us-east-1.amazonaws.com/trasport.jpg",
     },
     {
       title: "Machinery & Machinery Parts Import",
@@ -79,7 +79,7 @@ export default function Home() {
       description:
         "High-quality machinery and parts imported to keep your business moving.",
       image:
-        "https://images.pexels.com/photos/4488660/pexels-photo-4488660.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://kavinco.s3.us-east-1.amazonaws.com/trasport+(2).jpg",
     },
   ];
 
@@ -154,7 +154,7 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 </div>
-                <div className="p-6 flex flex-col items-center text-center">
+                <div className="p-6 flex flex-col items-center border-t-4 border-orange-600 text-orange-600 px-5 py-2 text-center">
                   <span className="text-orange-600 font-semibold uppercase text-sm tracking-wide">
                     {service.type}
                   </span>
@@ -162,12 +162,13 @@ export default function Home() {
                     {service.title}
                   </h3>
                   <p className="text-gray-600 mb-4">{service.description}</p>
-                  <Link
+                   <Link
                     to="/gallery"
-                    className="inline-block bg-orange-600 hover:bg-orange-500 text-white px-5 py-2 rounded-lg font-semibold transition-all"
-                  >
-                    View Gallery
-                  </Link>
+                    className="inline-block border-2 border-orange-600 text-orange-600 bg-white 
+                                hover:bg-orange-600 hover:text-white px-5 py-2 rounded-lg 
+                               font-semibold transition-all duration-300"
+>                       View Gallery
+                    </Link>
                 </div>
               </div>
             ))}
