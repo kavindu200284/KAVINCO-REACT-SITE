@@ -6,11 +6,11 @@ export default function Slider() {
   const slides = [
     {
       id: 1,
-      title: "Empower Your Business",
+      title: "Build Smarter. Perform Better.",
       description:
-        "Upgrade your workflow with next-gen automation tools designed to boost efficiency and reduce downtime.",
+        "Take your operations to the next level with custom machinery solutions tailored to your unique workflow.",
       image:
-        "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=80",
+        "https://kavinco.s3.us-east-1.amazonaws.com/slider-01.jpg",
       button1: { text: "Explore", link: "/brandnew" },
       button2: { text: "Learn More", link: "/blog" },
     },
