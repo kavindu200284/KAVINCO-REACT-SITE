@@ -3,9 +3,10 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
-import ECommerce from "./pages/Ecommerce"; // <- new E-Commerce page
+import ECommerce from "./pages/Ecommerce";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { auth } from "./services/auth";
+import ProductDetails from "./pages/ProductDetails";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         {/* Home page */}
         <Route path="/" element={<Home />} />
 
-        {/* Login and Signup */}
+        {/* Login */}
         <Route
           path="/login"
           element={
@@ -25,6 +26,8 @@ function App() {
             )
           }
         />
+
+        {/* Signup */}
         <Route
           path="/signup"
           element={
@@ -49,7 +52,13 @@ function App() {
         {/* Public E-Commerce Page */}
         <Route path="/brandnew" element={<ECommerce />} />
 
-        {/* Catch-all: redirect to Home */}
+        {/* New product listing page */}
+        <Route path="/ecommerce" element={<ECommerce />} />
+
+        {/* Product details page */}
+        <Route path="/product/:id" element={<ProductDetails />} />
+
+        {/* Catch-all */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>

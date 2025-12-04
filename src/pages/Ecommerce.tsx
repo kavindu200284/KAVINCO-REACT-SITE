@@ -4,12 +4,15 @@ import { Product } from "../types/Product";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "./ECommerce.css"; // Make sure to import the CSS
+import { useNavigate } from "react-router-dom";
+
+
 
 export default function ECommerce() {
   const [products, setProducts] = useState<Product[]>([]);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-
+  const navigate = useNavigate();
   const PRODUCTS_PER_PAGE = 15;
 
   useEffect(() => {
@@ -136,7 +139,7 @@ export default function ECommerce() {
                     color: "white",
                     cursor: "pointer",
                   }}
-                  onClick={() => alert(`See more about ${p.name}`)}
+                  onClick={() => navigate(`/product/${p._id}`)}
                 >
                   See More
                 </button>
