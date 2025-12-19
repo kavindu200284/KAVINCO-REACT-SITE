@@ -94,9 +94,10 @@ export default function ECommerce() {
                     style={{
                       position: "absolute",
                       top: "-30px",
-                      right: "-70px",
-                      width: "150px",
-                      height: "135px",
+                      right: "-20px",
+                      width: "120px",
+                      height: "110px",
+                      rotate:"30",
                     }}
                   />
                 )}

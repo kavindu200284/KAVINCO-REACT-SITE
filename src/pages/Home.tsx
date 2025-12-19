@@ -13,13 +13,13 @@ export default function Home() {
     {
       title: "Brand New Machinery",
       description: "Explore our collection of high-quality brand-new industrial machines.",
-      link: "/new-machinery",
+      link: "/brandnew",
       icon: Factory,
     },
     {
       title: "Used Machinery",
       description: "Browse fully tested and reliable pre-owned machinery at great prices.",
-      link: "/used-machinery",
+      link: "/used",
       icon: Package,
     },
     {
