@@ -13,19 +13,19 @@ export default function Home() {
     {
       title: "Brand New Machinery",
       description: "Explore our collection of high-quality brand-new industrial machines.",
-      link: "https://www.kavinco.lk//brandnew",
+      link: "https://www.kavinco.lk/brandnew",
       icon: Factory,
     },
     {
       title: "Used Machinery",
       description: "Browse fully tested and reliable pre-owned machinery at great prices.",
-      link: "https://www.kavinco.lk//used",
+      link: "https://www.kavinco.lk/used",
       icon: Package,
     },
     {
       title: "Shop",
       description: "Buy spare parts, components, and accessories directly from our shop.",
-      link: "https://www.kavinco.lk//shop",
+      link: "https://www.kavinco.lk/shop",
       icon: ShoppingCart,
     },
     {
