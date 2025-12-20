@@ -134,7 +134,7 @@ export default function Home() {
 
                 {/* TITLE */}
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  {feature.title}
+                  {feature.link}
                 </h3>
 
                 {/* DESCRIPTION */}
