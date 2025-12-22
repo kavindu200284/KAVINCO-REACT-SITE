@@ -1,162 +1,213 @@
-import { useState, useEffect } from "react";
-import { ChevronUp, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Props {
   images: string[];
+  watermarkUrl?: string;
+  watermarkOpacity?: number; // Control opacity via prop only (0 - 1)
 }
 
-export default function GalleryCarousel({ images }: Props) {
+export default function GalleryCarousel({
+  images,
+  watermarkUrl,
+  watermarkOpacity,
+}: Props) {
   const [active, setActive] = useState(0);
-  const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 375
+  );
 
-  const visibleCount = 3;
-  const half = Math.floor(visibleCount / 2);
+  // default watermark
+  const watermark = watermarkUrl ?? "/logo.png";
+  const wmOpacity = typeof watermarkOpacity === "number"
+    ? Math.max(0, Math.min(1, watermarkOpacity))
+    : 0.18;
 
-  const prev = () => setActive((prev) => (prev - 1 + images.length) % images.length);
-  const next = () => setActive((prev) => (prev + 1) % images.length);
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-  // Touch handlers for mobile swipe
+  const prev = () => setActive((s) => (s - 1 + images.length) % images.length);
+  const next = () => setActive((s) => (s + 1) % images.length);
+
   const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.targetTouches[0].clientX);
+    setTouchStartX(e.touches[0].clientX);
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
-    setTouchEnd(e.changedTouches[0].clientX);
-    handleSwipe();
+    if (touchStartX === null) return;
+    const endX = e.changedTouches[0].clientX;
+    const delta = touchStartX - endX;
+    if (delta > 50) next();
+    else if (delta < -50) prev();
+    setTouchStartX(null);
   };
 
-  const handleSwipe = () => {
-    if (touchStart - touchEnd > 75) {
-      // Swiped left
-      next();
-    }
-    if (touchEnd - touchStart > 75) {
-      // Swiped right
-      prev();
-    }
-  };
+  const getIndexFromOffset = (offset: number) =>
+    (active + offset + images.length) % images.length;
 
-  const addWatermark = (src: string) => src;
+  const mobileCenterWidth = Math.min(420, Math.max(260, windowWidth - 48));
+  const mobileCenterHeight = 380;
+  const mobileSideScale = 0.6;
+  const mobileSideHeight = Math.round(mobileCenterHeight * mobileSideScale);
+  const mobileDistance = Math.max(140, Math.round(mobileCenterWidth * 0.6));
+
+  const desktopItemWidth = 350;
+  const desktopDistance = 380;
+
+  const watermarkStyle = (containerHeight: number) => ({
+    position: "absolute" as const,
+    left: "50%",
+    top: "50%",
+    transform: "translate(-50%, -50%)",
+    height: `${Math.round(containerHeight / 3)}px`,
+    width: "auto",
+    opacity: wmOpacity,
+    pointerEvents: "none" as const,
+    mixBlendMode: "normal" as const,
+  });
 
   return (
-    <section className="relative w-full py-16 bg-white">
-      {/* Desktop Horizontal Carousel */}
-      <div className="hidden md:flex justify-center items-center relative w-full overflow-hidden" style={{ height: "500px" }}>
-        {images.map((img, index) => {
-          let offset = index - active;
-          if (offset < -Math.floor(images.length / 2)) offset += images.length;
-          if (offset > Math.floor(images.length / 2)) offset -= images.length;
-
-          if (Math.abs(offset) > half) return null;
-
-          const scale = offset === 0 ? 1 : 0.85;
-          const zIndex = offset === 0 ? 20 : 10;
-          const opacity = offset === 0 ? 1 : 0.5;
-          const border = offset === 0 ? "6px solid #ff6600" : "none";
+    <section className="relative w-full py-10 bg-white">
+      {/* Desktop: Horizontal carousel (3 visible, center big) */}
+      <div
+        className="hidden md:flex justify-center items-center relative w-full overflow-hidden"
+        style={{ height: 520 }}
+      >
+        {[-1, 0, 1].map((offset) => {
+          const index = getIndexFromOffset(offset);
+          const isCenter = offset === 0;
+          const scale = isCenter ? 1 : 0.85;
+          const zIndex = isCenter ? 30 : 10;
+          const opacity = isCenter ? 1 : 0.6;
+          const border = isCenter ? "6px solid #ff6600" : "none";
+          const containerHeight = 440;
 
           return (
             <div
               key={index}
-              className="absolute transition-all duration-500 rounded-xl shadow-2xl overflow-hidden"
+              className="absolute transition-all duration-500 rounded-xl overflow-hidden shadow-2xl"
               style={{
-                transform: `translateX(${offset * 380}px) scale(${scale})`,
+                left: "50%",
+                transform: `translateX(calc(-50% + ${offset * desktopDistance}px)) scale(${scale})`,
                 zIndex,
                 opacity,
-                width: "350px",
-                height: "450px",
+                width: `${desktopItemWidth}px`,
+                height: containerHeight,
                 border,
+                background: "#fff",
               }}
             >
               <img
-                src={addWatermark(img)}
-                alt="Gallery"
+                src={images[index]}
+                alt={`gallery-${index}`}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute bottom-2 right-2 text-white text-sm opacity-50 pointer-events-none">
-                Kavinco
-              </div>
+              <img
+                src={watermark}
+                alt="Kavinco watermark"
+                style={watermarkStyle(containerHeight)}
+                aria-hidden
+              />
             </div>
           );
         })}
       </div>
 
-      {/* Mobile Carousel with 3 Images (center full, sides small) */}
+      {/* Mobile: Always show 3 items (left small, center full, right small), overflow clipped */}
       <div
         className="md:hidden relative w-full overflow-hidden"
-        style={{ height: "450px" }}
+        style={{ height: mobileCenterHeight + 40 }}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
-        <div className="relative h-full flex items-center justify-center">
-          {images.map((img, index) => {
-            const offset = index - active;
-            if (Math.abs(offset) > half) return null;
+        <div className="relative h-full">
+          {[-1, 0, 1].map((offset) => {
+            const index = getIndexFromOffset(offset);
+            const isCenter = offset === 0;
 
-            const scale = offset === 0 ? 1 : 0.65;
-            const zIndex = offset === 0 ? 20 : 10;
-            const opacity = offset === 0 ? 1 : 0.7;
-            const border = offset === 0 ? "4px solid #ff6600" : "3px solid rgba(255, 255, 255, 0.5)";
+            const width = isCenter
+              ? mobileCenterWidth
+              : Math.round(mobileCenterWidth * mobileSideScale);
+            const height = isCenter ? mobileCenterHeight : mobileSideHeight;
+
+            const zIndex = isCenter ? 30 : 10;
+            const opacity = isCenter ? 1 : 0.95;
+            const border = isCenter ? "5px solid #ff6600" : "2px solid rgba(255,255,255,0.9)";
+            const boxShadow = isCenter ? "0 12px 40px rgba(0,0,0,0.25)" : "0 6px 12px rgba(255,255,255,0.7)";
 
             return (
               <div
                 key={index}
-                className="absolute transition-all duration-500 rounded-lg overflow-hidden shadow-lg"
+                className="absolute transition-all duration-400 rounded-lg overflow-hidden"
                 style={{
-                  transform: `translateX(${offset * 180}px) scale(${scale})`,
+                  top: "50%",
+                  left: `calc(50% + ${offset * mobileDistance}px)`,
+                  transform: "translate(-50%, -50%)",
                   zIndex,
                   opacity,
-                  width: "280px",
-                  height: "380px",
+                  width: `${width}px`,
+                  height,
                   border,
-                  boxShadow: offset === 0 
-                    ? "0 10px 30px rgba(0, 0, 0, 0.3)" 
-                    : "0 5px 15px rgba(255, 255, 255, 0.4)",
+                  boxShadow,
+                  background: "#fff",
                 }}
               >
-                <img
-                  src={addWatermark(img)}
-                  alt="Gallery"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute bottom-2 right-2 text-white text-xs opacity-50 pointer-events-none">
-                  Kavinco
-                </div>
+                <img src={images[index]} alt={`gallery-${index}`} className="w-full h-full object-cover" />
+                <img src={watermark} alt="Kavinco watermark" style={watermarkStyle(height)} aria-hidden />
+                {!isCenter && (
+                  <div
+                    aria-hidden
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      background: "linear-gradient(180deg, rgba(255,255,255,0.35), rgba(255,255,255,0.18))",
+                      pointerEvents: "none",
+                    }}
+                  />
+                )}
               </div>
             );
           })}
         </div>
       </div>
 
-      {/* Navigation Buttons - Desktop */}
-      <div className="hidden md:flex justify-center gap-6 mt-10">
+      {/* Controls - Desktop */}
+      <div className="hidden md:flex justify-center gap-6 mt-6">
         <button
           onClick={prev}
           className="p-3 rounded-full border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white transition"
+          aria-label="previous"
         >
-          <ChevronLeft size={24} />
+          <ChevronLeft size={20} />
         </button>
         <button
           onClick={next}
           className="p-3 rounded-full border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white transition"
+          aria-label="next"
         >
-          <ChevronRight size={24} />
+          <ChevronRight size={20} />
         </button>
       </div>
 
-      {/* Navigation Buttons - Mobile */}
-      <div className="md:hidden flex justify-center gap-6 mt-8">
+      {/* Controls - Mobile */}
+      <div className="md:hidden flex justify-center gap-6 mt-4">
         <button
           onClick={prev}
           className="p-3 rounded-full border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white transition"
+          aria-label="previous"
         >
-          <ChevronLeft size={24} />
+          <ChevronLeft size={20} />
         </button>
         <button
           onClick={next}
           className="p-3 rounded-full border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white transition"
+          aria-label="next"
         >
-          <ChevronRight size={24} />
+          <ChevronRight size={20} />
         </button>
       </div>
     </section>
