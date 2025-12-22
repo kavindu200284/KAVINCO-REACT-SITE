@@ -38,55 +38,56 @@ export default function Home() {
 
   // SERVICES LIST
   const services = [
-    {
-      title: "Industrial Machinery Repair & Maintenance",
-      type: "",
-      description:
-        "From downtime to uptime—we deliver expert care that keeps your industry moving.",
-      image:
-        "https://kavinco.s3.us-east-1.amazonaws.com/Industrial-machinery-repair-services.jpg",
-    },
-    {
-      title: "Customized Machinery Manufacturing",
-      type: "",
-      description:
-        "From idea to implementation—we design machines that drive unstoppable growth.",
-      image:
-        "https://kavinco.s3.us-east-1.amazonaws.com/pngtree-spotless-cleanroom-environment-with-transparent-protective-covers-over-precision-machinery-representing-image_19868372.webp",
-    },
-    {
-      title: "Machinery Modification",
-      type: "",
-      description:
-        "From old design to new power—we upgrade and modify machinery to match modern demands.",
-      image:
-        "https://kavinco.s3.us-east-1.amazonaws.com/filling.jpg",
-    },
-    {
-      title: "Spare Parts Fabrication & Repair",
-      type: "",
-      description:
-        "From wear to repair—we craft custom spare parts that keep your machines running strong.",
-      image:
-        "https://kavinco.s3.us-east-1.amazonaws.com/pngtree-cnc-machine-working-with-workpiece-on-smart-factory-image_15739298.jpg",
-    },
-    {
-      title: "Machinery Relocation & Transport",
-      type: "",
-      description:
-        "Seamless relocation, secure transport—keeping your operations on track.",
-      image:
-        "https://kavinco.s3.us-east-1.amazonaws.com/trasport.jpg",
-    },
-    {
-      title: "Machinery & Machinery Parts Import",
-      type: "",
-      description:
-        "High-quality machinery and parts imported to keep your business moving.",
-      image:
-        "https://kavinco.s3.us-east-1.amazonaws.com/trasport+(2).jpg",
-    },
-  ];
+  {
+    title: "Industrial Machinery Repair & Maintenance",
+    slug: "repair",
+    description:
+      "From downtime to uptime—we deliver expert care that keeps your industry moving.",
+    image:
+      "https://kavinco.s3.us-east-1.amazonaws.com/Industrial-machinery-repair-services.jpg",
+  },
+  {
+    title: "Customized Machinery Manufacturing",
+    slug: "manufacturing",
+    description:
+      "From idea to implementation—we design machines that drive unstoppable growth.",
+    image:
+      "https://kavinco.s3.us-east-1.amazonaws.com/pngtree-spotless-cleanroom-environment-with-transparent-protective-covers-over-precision-machinery-representing-image_19868372.webp",
+  },
+  {
+    title: "Machinery Modification",
+    slug: "modification",
+    description:
+      "From old design to new power—we upgrade and modify machinery to match modern demands.",
+    image:
+      "https://kavinco.s3.us-east-1.amazonaws.com/filling.jpg",
+  },
+  {
+    title: "Spare Parts Fabrication & Repair",
+    slug: "spareparts",
+    description:
+      "From wear to repair—we craft custom spare parts that keep your machines running strong.",
+    image:
+      "https://kavinco.s3.us-east-1.amazonaws.com/pngtree-cnc-machine-working-with-workpiece-on-smart-factory-image_15739298.jpg",
+  },
+  {
+    title: "Machinery Relocation & Transport",
+    slug: "transport",
+    description:
+      "Seamless relocation, secure transport—keeping your operations on track.",
+    image:
+      "https://kavinco.s3.us-east-1.amazonaws.com/trasport.jpg",
+  },
+  {
+    title: "Machinery & Machinery Parts Import",
+    slug: "import",
+    description:
+      "High-quality machinery and parts imported to keep your business moving.",
+    image:
+      "https://kavinco.s3.us-east-1.amazonaws.com/trasport+(2).jpg",
+  },
+];
+
 
   const youtubeVideos = [
     "https://www.youtube.com/embed/M6nwTW07PqA",
@@ -192,13 +193,17 @@ export default function Home() {
                   </h3>
                   <p className="text-gray-600 mb-4">{service.description}</p>
 
-                  <Link
-                    to="/gallery"
-                    className="inline-block border-2 border-orange-600 text-orange-600 bg-white 
-                                hover:bg-orange-600 hover:text-white px-5 py-2 rounded-lg 
-                               font-semibold transition-all duration-300"
+                                  <Link
+                    to={`/gallery/${service.slug}`}
+                    className="
+                      inline-flex items-center gap-2
+                      border-2 border-orange-600 text-orange-600 bg-white
+                      hover:bg-orange-600 hover:text-white
+                      px-5 py-2 rounded-lg
+                      font-semibold transition-all duration-300
+                    "
                   >
-                    View Gallery
+                  View Gallery
                   </Link>
                 </div>
               </div>
