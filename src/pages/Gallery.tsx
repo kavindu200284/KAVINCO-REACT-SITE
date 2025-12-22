@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams, Navigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -6,6 +7,11 @@ import { galleryData } from "../data/galleryData";
 
 export default function Gallery() {
   const { serviceSlug } = useParams();
+
+  // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [serviceSlug]);
 
   const data = serviceSlug
     ? galleryData[serviceSlug as keyof typeof galleryData]
@@ -30,7 +36,7 @@ export default function Gallery() {
       </section>
 
       {/* GALLERY */}
-      <GalleryCarousel images={data.images} />
+      <GalleryCarousel images={data.images} watermarkOpacity={0.85} />
 
       {/* DESCRIPTION */}
       <section className="py-20 bg-white mt-16">
