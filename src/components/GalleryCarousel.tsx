@@ -103,7 +103,7 @@ export default function GalleryCarousel({
             >
               <img
                 src={images[index]}
-                alt={`gallery-${index}`}
+
                 className="w-full h-full object-cover"
               />
               <img

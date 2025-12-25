@@ -2,54 +2,183 @@ export const galleryData = {
   repair: {
     title: "Industrial Machinery Repair & Maintenance",
     description:
-      "Real-world repair and maintenance projects restoring industrial machinery to peak operational performance.",
+"We provide 24/7 industrial machinery repair and maintenance services across Sri Lanka, ensuring that factories, production plants, and industrial facilities operate smoothly with minimal downtime. Our team of  technicians specializes in electrical, electronic, mechanical, and PLC-based machinery repairs, offering fast, reliable, and cost-effective solutions. From emergency breakdown support to scheduled preventive maintenance, we help production managers, maintenance managers, and business owners maintain optimal performance and extend the lifespan of their machinery, keeping all types of industrial and production-level equipment running efficiently, safely, and without interruption\n\n" +
+"SERVICES INCLUDE:\n" +
+"• 24/7 emergency breakdown support \n" +
+"• Electrical & electronic machinery repairs \n" +
+"• Mechanical machinery servicing (mixers, vacuum, sealing & packing machines) " +
+"• PLC & automation-based machine support \n" +
+"• Preventive maintenance programs \n\n" +
+"INDUSTRIES WE SERVE:\n" +
+"• Pharmaceutical manufacturing – Tableting machines, blister packing, vacuum systems, and all production-level pharmaceutical machinery.\n" +
+"• Food & beverage processing – Mixers, packaging, vacuum systems, conveyors, and industrial food machinery.\n" +
+"• Packaging & general manufacturing – Sealing, packing, and processing machinery used in any industrial production environment.\n" +
+"• Any industrial production machinery used in factories – We support both PLC-based and non-PLC machinery across multiple industries.\n\n" +
+"EXAMPLE MACHINERY WE REPAIR:\n" +
+"• Vacuum machines\n" +
+"• Blister packing machines\n" +
+"• Tableting machines\n" +
+"• Conveyors & material handling systems\n" +
+"• Industrial mixers\n" +
+"• Sealing machines\n" +
+"• Packaging machines\n" +
+"• Any custom or industrial-use machinery\n\n" +
+"WHY CHOOSE US:\n" +
+"• 24 hours × 7 days emergency support\n" +
+"• electrical, electronic & mechanical troubleshooting\n" +
+"• PLC and non-PLC machine support\n" +
+"• Cost-effective repairs and preventive maintenance\n" +
+"• Minimized machine downtime for maximum productivity\n\n" +
+"CONTACT US:\n" +
+"📞 077 041 4713\n" +
+"📍 142/8, 5th Lane, Kaldemulla, Moratuwa\n" +
+"🕒 24 Hours × 7 Days Service",
+
     images: [
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGxwl4fhem6m2urbLPsROL7UHP2tjF4CowszALXe5IwDIMG7C2VdCqSyLCsNi4mrqWuKJgVE215SQCpX3TOTQSUgwhOnN_kBr2FB6omLvWww&s=10",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzyj1cScfI4rOvISJ3pJLTObOU20kAFtW8Ufi8NOBOcXbveYNLu1e1ZFu2ylkpz5R40Q6j581D0uyEJNCrvXfRAC0ps3PEM0ppB0TU8nXy&s=10",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc-G6UBr-RXuMoDZWBlefA8D21ISpuX2BlB7U2Czh75f784g6VXiJzccyHRpgOa2xjYbMPqPQfDpJnXPZiAL2UB83PnSfja-g04Oi3Ewv1&s=10",
-      "data:image/jpeg;base64,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",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrIaMbsEo99rVI8pOCZWLXIZ1m2GFSld6kdg&s",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/maintenance/image-13.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/maintenance/image-16.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/maintenance/image-15.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/maintenance/image-17.jpg", 
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/maintenance/image-12.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/maintenance/image+-14.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/maintenance/image-14.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/maintenance/image-21.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/maintenance/image-20.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/maintenance/image-43.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/maintenance/image-51.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/maintenance/image-52.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/maintenance/image-54.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/maintenance/image-55.jpg",
     ],
   },
 
   manufacturing: {
     title: "Customized Machinery Manufacturing",
     description:
-      "From concept to fabrication — precision-built machinery tailored for industrial efficiency.",
-    images: [
-      "https://kavinco.s3.us-east-1.amazonaws.com/manufacture1.jpg",
-      "https://kavinco.s3.us-east-1.amazonaws.com/manufacture2.jpg",
-      "https://kavinco.s3.us-east-1.amazonaws.com/manufacture3.jpg",
+    
+"We specialize in industrial machinery manufacturing in Sri Lanka, providing fully customizable machinery solutions designed to match your exact production requirements. Every production process is unique, and our team carefully analyzes your workflow, capacity, space limitations, automation needs, and output goals before designing and manufacturing the machine.\n\n" +
+"Our custom machinery solutions help pharmaceutical, food & beverage, packaging, and industrial manufacturing companies improve productivity, efficiency, and reliability. Whether you need a new machine, a custom-built production system, or improvements to an existing machine, we deliver solutions tailored to your unique production method.\n\n" +
+"We work closely with production managers, maintenance managers, and company owners to develop machinery that improves operational performance, reduces manual work, and supports long-term growth. If you are using a unique or innovative production process, we are ready to improve and optimize it with engineering-driven solutions.\n\n" +
+"All machines are manufactured using high-quality components and tested under real production conditions to ensure durability, safety, and consistent performance. Our industrial machinery manufacturing services follow industry standards suitable for Sri Lankan factories and production environments.\n\n" +
+"We provide warranty and trusted after-sales service for all manufactured machines, including installation support, operator guidance, maintenance assistance, and technical support. Our commitment extends beyond delivery, ensuring your production machinery operates reliably and efficiently over time.\n\n" ,
+images: [
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/manufacturing/image -06.png",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/manufacturing/image-01.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/manufacturing/image-02.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/manufacturing/image-03.png", 
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/manufacturing/image-04.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/manufacturing/image-05.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/manufacturing/image-07.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/manufacturing/image-08.png",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/manufacturing/image-09.png",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/manufacturing/image-10.png",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/manufacturing/image-11.png",
     ],
   },
 
   modification: {
     title: "Machinery Modification Projects",
     description:
-      "Upgrading legacy machinery to meet modern production and safety standards.",
+      "We provide professional industrial machinery modification services in Sri Lanka, helping factories and production plants upgrade, improve, and adapt their existing machines to meet new production demands. Our team carefully analyzes your current machinery, production workflow, capacity limitations, and operational challenges before proposing effective modification solutions.\n\n" +
+"Industrial machinery modification is ideal when you need to improve efficiency, increase output, enhance safety, reduce manual operations, or adapt machines for new products. Instead of investing in new machinery, we help you extend the life and performance of your existing equipment through smart mechanical, electrical, electronic, and automation-based modifications.\n\n" +
+"We support machinery modifications for pharmaceutical production, food and beverage processing, packaging lines, and all types of industrial production-level machinery. Our services include mechanical redesign, electrical and electronic upgrades, control panel improvements, PLC and automation integration, and performance optimization.\n\n" +
+"We work closely with production managers, maintenance managers, and company owners to ensure each modification aligns with real production needs. Whether your goal is to improve a unique production method, comply with updated standards, or increase reliability, we deliver customized and practical solutions.\n\n" +
+"All machinery modifications are carried out using quality components and tested under actual operating conditions. We provide warranty and trusted after-sales support, ensuring reliable performance, reduced downtime, and long-term operational stability for your production machinery.\n\n" ,
     images: [
-      "https://kavinco.s3.us-east-1.amazonaws.com/mod1.jpg",
-      "https://kavinco.s3.us-east-1.amazonaws.com/mod2.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/modification/image-22.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/modification/image-23.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/modification/image-24.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/modification/image-25.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/modification/image-26.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/modification/image-27.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/modification/image-28.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/modification/image-29.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/modification/image-30.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/modification/image-31.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/modification/image-46.png",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/modification/image-53.jpg",
+      
+
+
     ],
   },
 
   spareparts: {
     title: "Spare Parts Fabrication & Repair",
     description:
-      "Custom-fabricated spare parts ensuring reliability and extended machine life.",
+      "We provide professional spare parts fabrication and customized spare parts manufacturing services in Sri Lanka for industrial and production-level machinery. We manufacture high-quality replacement and custom spare parts based on your machine specifications, damaged samples, drawings, or operational requirements, ensuring perfect fit and reliable performance.\n\n" +
+"Our spare parts fabrication services cover stainless steel components, metal parts, precision-fabricated items, silicone and rubber seals, gaskets, bushings, shafts, brackets, and mechanical assemblies. We also manufacture and repair electronic spare parts such as control cards, PCB-based modules, and custom electrical components used in industrial machinery.\n\n" +
+"Customized spare parts manufacturing is ideal when original parts are unavailable, imported parts cause long lead times, or you need improved durability and performance. We carefully analyze your machinery, operating conditions, materials, and load requirements before fabricating spare parts suitable for pharmaceutical, food & beverage, packaging, and general industrial applications.\n\n" +
+"All fabricated spare parts are manufactured using quality materials and tested for dimensional accuracy, strength, and operational reliability. We provide trusted service and technical support, ensuring your machinery operates safely and efficiently with long-lasting spare parts.\n\n",
     images: [
-      "https://kavinco.s3.us-east-1.amazonaws.com/spare1.jpg",
-      "https://kavinco.s3.us-east-1.amazonaws.com/spare2.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-57.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-58.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-59.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image=60.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-61.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-62.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-63.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-64.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-65.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-66.jpg",
+      " https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-68.jpg",
+       "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-69.jpg",
+       "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-70.jpg",
+       "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-71.jpg",
+       "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-72.jpg",
+       "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-73.jpg",
+       "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-74.jpg",
+       "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-75.jpg",
+       "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-76.jpg",
+       "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-77.jpg",
+       "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-78.jpg",
+       "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-79.jpg",
+       "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-80.jpg",
+       "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-81.jpg",
+       "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-82.jpg",
+       "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-83.jpg",
+       "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-84.jpg",
+       "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-85.jpg",
+       "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-86.jpg",
+       "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-87.jpg",
+       "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-88.jpg",
+       "https://kavinco.s3.us-east-1.amazonaws.com/gallery/spare/image-89.jpg",
     ],
   },
 
   transport: {
     title: "Machinery Relocation & Transport",
     description:
-      "Heavy machinery transport and on-site installation handled with precision.",
+      "We provide complete machinery relocation and industrial transport services in Sri Lanka, supporting factories, production plants, and manufacturing facilities with safe and efficient machine movement solutions. Whether you need to relocate a single machine or perform a full factory relocation, our experienced team manages the entire process from planning to final commissioning.\n\n" +
+"Our machinery relocation services include safe disconnection of electrical power, control wiring, pneumatics, and mechanical connections before transport. Each machine is carefully prepared, secured, and handled to prevent damage during movement. \n\n" +
+"We use suitable lifting and transport equipment, including boom trucks, lifting devices, and handling tools, to safely move heavy and sensitive industrial machinery. Our team is trained to handle pharmaceutical, food & beverage, packaging, and general industrial production machinery with precision and care.\n\n" +
+"After transportation, we provide complete re-installation, alignment, and fine-tuning of machines at the new location. This includes reconnection of power, pneumatics, and control systems, test runs, and performance checks to ensure machines operate safely and efficiently under production conditions.\n\n",
     images: [
-      "https://kavinco.s3.us-east-1.amazonaws.com/transport1.jpg",
-      "https://kavinco.s3.us-east-1.amazonaws.com/transport2.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/relocation/image-47.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/relocation/image-48.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/relocation/image-49.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/relocation/image-50.jpg",
+    ],
+  },
+    import: {
+    title: "Machinery Installation & Import",
+    description:
+      "We provide complete machinery import and installation services in Sri Lanka, supporting factories and production facilities with reliable, production-level machinery solutions. If you need any kind of industrial or production machinery, our team is ready to source, import, and install the most suitable machines based on your production requirements.\n\n" +
+"We carefully analyze your application, capacity needs, industry standards, and budget before selecting the best machinery. All imported machines are sourced from trusted manufacturers and supplied with warranty, ensuring long-term reliability and performance for pharmaceutical, food & beverage, packaging, and general industrial production.\n\n" +
+"In addition to full machine imports, we also import machinery spare parts and components for your existing equipment. Whether you require standard parts or customized machinery components, we manage the entire import process, reducing lead time and ensuring compatibility with your machines.\n\n" +
+"Our installation services include safe unloading, positioning, mechanical installation, electrical and pneumatic connections, system integration, testing, and commissioning. We ensure each machine is properly installed and fine-tuned for smooth operation under real production conditions.\n\n",
+images: [
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/imoprt/image-32.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/imoprt/image-33.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/imoprt/image-34.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/imoprt/image-35.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/imoprt/image-36.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/imoprt/image-37.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/imoprt/image-38.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/imoprt/image-39.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/imoprt/image-40.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/imoprt/image-41.jpg",
+      "https://kavinco.s3.us-east-1.amazonaws.com/gallery/imoprt/image-44.JPG",
     ],
   },
 };

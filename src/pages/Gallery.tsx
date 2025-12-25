@@ -13,6 +13,31 @@ export default function Gallery() {
     window.scrollTo(0, 0);
   }, [serviceSlug]);
 
+  // Disable right-click and drag on images
+  useEffect(() => {
+    const handleContextMenu = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.tagName === "IMG") {
+        e.preventDefault();
+      }
+    };
+
+    const handleDragStart = (e: DragEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.tagName === "IMG") {
+        e.preventDefault();
+      }
+    };
+
+    document.addEventListener("contextmenu", handleContextMenu);
+    document.addEventListener("dragstart", handleDragStart);
+
+    return () => {
+      document.removeEventListener("contextmenu", handleContextMenu);
+      document.removeEventListener("dragstart", handleDragStart);
+    };
+  }, []);
+
   const data = serviceSlug
     ? galleryData[serviceSlug as keyof typeof galleryData]
     : null;
@@ -22,33 +47,63 @@ export default function Gallery() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-white-100">
       <Header />
 
       {/* PAGE HEADER */}
-      <section className="pt-24 pb-10 text-center px-4">
+      <section className="pt-24 pb-1 text-center px-4">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
           {data.title}
         </h1>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-          {data.description}
-        </p>
       </section>
 
       {/* GALLERY */}
-      <GalleryCarousel images={data.images} watermarkOpacity={0.85} />
+      <GalleryCarousel images={data.images} watermarkOpacity={0.25} />
 
       {/* DESCRIPTION */}
-      <section className="py-20 bg-white mt-16">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
-            Project Overview
-          </h2>
-          <p className="text-gray-600 text-lg leading-relaxed">
-            Each project shown represents our commitment to engineering
-            excellence, safety compliance, and long-term reliability in
-            industrial environments.
-          </p>
+      <section className="bg-white py-16 sm:py-24">
+        <div
+          className="
+            text-gray-700
+            leading-relaxed
+            text-base sm:text-lg
+            max-w-3xl
+            mx-auto
+            px-12 sm:px-6
+            text-left
+          "
+        >
+          {data.description.split("\n").map((line, index) => {
+            // SECTION HEADINGS (ALL CAPS)
+            if (line === line.toUpperCase() && line.trim().length > 0) {
+              return (
+                <h3
+                  key={index}
+                  className="
+                    text-lg sm:text-xl
+                    font-semibold
+                    text-gray-900
+                    mt-10
+                    mb-4
+                  "
+                >
+                  {line}
+                </h3>
+              );
+            }
+
+            // EMPTY LINE SPACING
+            if (line.trim() === "") {
+              return <div key={index} className="h-4" />;
+            }
+
+            // NORMAL TEXT & BULLETS
+            return (
+              <p key={index} className="mb-3">
+                {line}
+              </p>
+            );
+          })}
         </div>
       </section>
 
