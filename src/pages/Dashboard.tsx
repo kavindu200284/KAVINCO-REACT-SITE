@@ -118,6 +118,10 @@ export default function Dashboard() {
                     src={product.imageUrl}
                     alt={product.name}
                     className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                    draggable={false}
+                    onContextMenu={(e) => e.preventDefault()}
+                    onDragStart={(e) => e.preventDefault()}
+                    style={{ userSelect: 'none' }}
                   />
                 </div>
                 <div className="p-6">
