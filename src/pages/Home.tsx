@@ -23,7 +23,7 @@ export default function Home() {
       icon: Package,
     },
     {
-      title: "Shop",
+      title: "Nut & Bolts",
       description: "Buy spare parts, components, and accessories directly from our shop.",
       link: "/shop",
       icon: ShoppingCart,
@@ -152,7 +152,7 @@ export default function Home() {
                     hover:bg-orange-600 hover:text-white transition-all duration-300
                   "
                 >
-                  Explore
+                  Shop
                 </Link>
               </div>
             ))}
@@ -224,7 +224,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-20">
             {youtubeVideos.map((url, index) => (
               <div
                 key={index}

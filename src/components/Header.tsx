@@ -43,7 +43,7 @@ export default function Header() {
               to="/Ecommerce"
               className="font-semibold hover:text-gray-100 transition-colors font-medium"
             >
-              Shop
+              Nut & Bolts
             </Link>
             <Link
               to="/blog"
@@ -90,19 +90,18 @@ export default function Header() {
             mobileOpen ? "max-h-[500px] opacity-100 mt-3" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="space-y-3 border-t border-white/30 pt-3">
+          <div className=" space-y-3 border-t border-white/30 pt-3 text-center ">
             {[
               { path: "/", label: "Home" },
               { path: "/brandnew", label: "Brand New" },
               { path: "/used", label: "Used" },
-              { path: "/tools", label: "Tools" },
-              { path: "/shop", label: "Shop" },
+              { path: "/shop", label: "Nut & Bolts" },
               { path: "/blog", label: "Blog" },
             ].map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className="block hover:text-gray-100 transition-colors font-medium"
+                className=" block hover:text-gray-100 transition-colors font-medium "
                 onClick={() => setMobileOpen(false)}
               >
                 {item.label}
