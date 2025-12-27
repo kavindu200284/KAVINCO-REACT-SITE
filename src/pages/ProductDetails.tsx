@@ -34,23 +34,23 @@ export default function ProductDetails() {
     <div>
       <Header />
       {/* ------------------- BACK BUTTON -------------------- */}
-      <button
-        onClick={() => window.history.back()}
-        style={{
-          marginTop: "40px",
-          padding: "12px 25px",
-          background: "#ff6600",
-          color: "white",
-          border: "none",
-          borderRadius: "8px",
-          cursor: "pointer",
-          fontSize: "16px",
-          marginLeft: "30px",
-          marginBottom: "20px",
-        }}
-      >
-        Back
-      </button>
+        <button
+          onClick={() => window.history.back()}
+          style={{
+            marginTop: "40px",
+            padding: "12px 25px",
+            background: "#ff6600",
+            color: "white",
+            border: "none",
+            borderRadius: "8px",
+            cursor: "pointer",
+            fontSize: "16px",
+            marginLeft:"30px",
+            marginBottom:"20px",
+          }}
+        >
+          Back
+        </button>
       <div
         style={{
           maxWidth: "1100px",
@@ -93,11 +93,7 @@ export default function ProductDetails() {
                   height: "100%",
                   objectFit: "contain",
                   transition: "0.3s ease",
-                  userSelect: "none",
                 }}
-                draggable={false}
-                onContextMenu={(e) => e.preventDefault()}
-                onDragStart={(e) => e.preventDefault()}
               />
             )}
           </div>
@@ -138,11 +134,7 @@ export default function ProductDetails() {
                     mainImage === product.image1Url
                       ? "3px solid blue"
                       : "2px solid #ffffffff",
-                  userSelect: "none",
                 }}
-                draggable={false}
-                onContextMenu={(e) => e.preventDefault()}
-                onDragStart={(e) => e.preventDefault()}
               />
             )}
 
@@ -161,11 +153,7 @@ export default function ProductDetails() {
                     mainImage === product.image2Url
                       ? "3px solid blue"
                       : "2px solid #ffffffff",
-                  userSelect: "none",
                 }}
-                draggable={false}
-                onContextMenu={(e) => e.preventDefault()}
-                onDragStart={(e) => e.preventDefault()}
               />
             )}
 
@@ -184,11 +172,7 @@ export default function ProductDetails() {
                     mainImage === product.image3Url
                       ? "3px solid blue"
                       : "2px solid #ffffffff",
-                  userSelect: "none",
                 }}
-                draggable={false}
-                onContextMenu={(e) => e.preventDefault()}
-                onDragStart={(e) => e.preventDefault()}
               />
             )}
           </div>
@@ -201,27 +185,27 @@ export default function ProductDetails() {
               fontSize: "28px",
               fontWeight: "700",
               marginBottom: "30px",
-              marginRight: "10px",
-              marginLeft: "10px",
+              marginRight:"10px",
+              marginLeft:"10px"
             }}
           >
             {product.title || product.name}
           </h1>
 
-          <p style={{ marginRight: "10px", marginLeft: "10px", fontSize: "16px", marginBottom: "5px" }}>
+          <p style={{ marginRight:"10px",marginLeft:"10px",fontSize: "16px", marginBottom: "5px" }}>
             <strong>Item Code:</strong> {product.itemCode || "N/A"}
           </p>
 
-          <p style={{ marginRight: "10px", marginLeft: "10px", fontSize: "16px", marginBottom: "5px" }}>
+          <p style={{ marginRight:"10px",marginLeft:"10px",fontSize: "16px", marginBottom: "5px" }}>
             <strong>Country of Origin:</strong>{" "}
             {product.countryOfOrigin || "N/A"}
           </p>
 
-          <p style={{ marginRight: "10px", marginLeft: "10px", fontSize: "16px", marginBottom: "5px" }}>
+          <p style={{ marginRight:"10px",marginLeft:"10px",fontSize: "16px", marginBottom: "5px" }}>
             <strong>Condition:</strong> {product.condition || "N/A"}
           </p>
 
-          <div style={{ marginRight: "10px", marginLeft: "10px", marginTop: "70px", fontSize: "17px" }}>
+          <div style={{ marginRight:"10px",marginLeft:"10px",marginTop: "70px", fontSize: "17px" }}>
             <strong>Description:</strong>
             <p style={{ marginTop: "5px", lineHeight: "1.6" }}>
               {product.description || "No description available."}
@@ -231,13 +215,13 @@ export default function ProductDetails() {
 
         {/* ------------------- VIDEO SECTION -------------------- */}
         {product.videoLink && (
-          <div style={{ marginRight: "10px", marginLeft: "10px", marginTop: "40px" }}>
+          <div style={{ marginRight:"10px",marginLeft:"10px",marginTop: "40px" }}>
             <h3 style={{ fontSize: "22px", marginBottom: "10px" }}>
               Product Video
             </h3>
 
             {product.videoLink.includes("youtube") ||
-              product.videoLink.includes("youtu.be") ? (
+            product.videoLink.includes("youtu.be") ? (
               <div
                 style={{
                   display: "flex",
@@ -277,6 +261,8 @@ export default function ProductDetails() {
             )}
           </div>
         )}
+
+        
       </div>
 
       <Footer />

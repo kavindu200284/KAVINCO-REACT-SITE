@@ -93,11 +93,11 @@ export default function ECommerce() {
                     alt="Sri Lanka"
                     style={{
                       position: "absolute",
-                      top: "-30px",
-                      right: "-20px",
-                      width: "120px",
-                      height: "110px",
-                      rotate:"30",
+                      top: "-20px",
+                      right: "-10px",
+                      width: "90px",
+                      height: "90px",
+                      rotate:"0",
                     }}
                   />
                 )}
