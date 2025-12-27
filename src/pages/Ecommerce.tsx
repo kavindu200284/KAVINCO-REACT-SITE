@@ -89,7 +89,7 @@ export default function ECommerce() {
               {p.countryOfOrigin &&
                 p.countryOfOrigin.toLowerCase() === "sri lanka" && (
                   <img
-                    src="/flag.png" // Put your flag.png in public folder
+                    src="/flag-1.png" // Put your flag.png in public folder
                     alt="Sri Lanka"
                     style={{
                       position: "absolute",
