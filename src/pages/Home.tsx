@@ -76,7 +76,7 @@ export default function Home() {
     description:
       "Seamless relocation, secure transport—keeping your operations on track.",
     image:
-      "https://kavinco.s3.us-east-1.amazonaws.com/trasport.jpg",
+      "/Services-5.png",
   },
   {
     title: "Machinery & Machinery Parts Import",
