@@ -12,7 +12,7 @@ export default function Header() {
           {/* --- LOGO --- */}
           <Link to="/" className="flex items-center space-x-2 group">
             <img
-              src="/logo.png"
+              src="/logo.webp"
               alt="Kavinco Logo"
               className="h-12 w-auto sm:h-12 md:h-14 lg:h-16 object-contain transition-all duration-300"
             />
