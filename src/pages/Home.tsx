@@ -52,7 +52,7 @@ export default function Home() {
     description:
       "From idea to implementation—we design machines that drive unstoppable growth.",
     image:
-      "https://kavinco.s3.us-east-1.amazonaws.com/pngtree-spotless-cleanroom-environment-with-transparent-protective-covers-over-precision-machinery-representing-image_19868372.webp",
+      "/Services-2.png",
   },
   {
     title: "Machinery Modification",
@@ -60,7 +60,7 @@ export default function Home() {
     description:
       "From old design to new power—we upgrade and modify machinery to match modern demands.",
     image:
-      "https://kavinco.s3.us-east-1.amazonaws.com/filling.jpg",
+      "/Services-3.png",
   },
   {
     title: "Spare Parts Fabrication & Repair",
@@ -68,7 +68,7 @@ export default function Home() {
     description:
       "From wear to repair—we craft custom spare parts that keep your machines running strong.",
     image:
-      "https://kavinco.s3.us-east-1.amazonaws.com/pngtree-cnc-machine-working-with-workpiece-on-smart-factory-image_15739298.jpg",
+      "/Services-4.png",
   },
   {
     title: "Machinery Relocation & Transport",
@@ -84,7 +84,7 @@ export default function Home() {
     description:
       "High-quality machinery and parts imported to keep your business moving.",
     image:
-      "https://kavinco.s3.us-east-1.amazonaws.com/trasport+(2).jpg",
+      "/Services-6.png",
   },
 ];
 
