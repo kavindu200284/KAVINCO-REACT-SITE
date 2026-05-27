@@ -76,7 +76,7 @@ export default function Home() {
     description:
       "Seamless relocation, secure transport—keeping your operations on track.",
     image:
-      "/Services-5.png",
+      "/Services-8.png",
   },
   {
     title: "Machinery & Machinery Parts Import",
