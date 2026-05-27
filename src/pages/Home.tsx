@@ -44,7 +44,7 @@ export default function Home() {
     description:
       "From downtime to uptime—we deliver expert care that keeps your industry moving.",
     image:
-      "https://kavinco.s3.us-east-1.amazonaws.com/Industrial-machinery-repair-services.jpg",
+      "/Services-1.png",
   },
   {
     title: "Customized Machinery Manufacturing",
