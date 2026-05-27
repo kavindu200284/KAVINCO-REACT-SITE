@@ -44,7 +44,7 @@ export default function Home() {
     description:
       "From downtime to uptime—we deliver expert care that keeps your industry moving.",
     image:
-      "/Services-1.png",
+      "/Services-1.webp",
   },
   {
     title: "Customized Machinery Manufacturing",
@@ -52,7 +52,7 @@ export default function Home() {
     description:
       "From idea to implementation—we design machines that drive unstoppable growth.",
     image:
-      "/Services-2.png",
+      "/Services-2.webp",
   },
   {
     title: "Machinery Modification",
@@ -60,7 +60,7 @@ export default function Home() {
     description:
       "From old design to new power—we upgrade and modify machinery to match modern demands.",
     image:
-      "/Services-3.png",
+      "/Services-3.webp",
   },
   {
     title: "Spare Parts Fabrication & Repair",
@@ -68,7 +68,7 @@ export default function Home() {
     description:
       "From wear to repair—we craft custom spare parts that keep your machines running strong.",
     image:
-      "/Services-4.png",
+      "/Services-4.webp",
   },
   {
     title: "Machinery Relocation & Transport",
@@ -76,7 +76,7 @@ export default function Home() {
     description:
       "Seamless relocation, secure transport—keeping your operations on track.",
     image:
-      "/Services-8.png",
+      "/Services-8.webp",
   },
   {
     title: "Machinery & Machinery Parts Import",
@@ -84,7 +84,7 @@ export default function Home() {
     description:
       "High-quality machinery and parts imported to keep your business moving.",
     image:
-      "/Services-6.png",
+      "/Services-6.webp",
   },
 ];
 
