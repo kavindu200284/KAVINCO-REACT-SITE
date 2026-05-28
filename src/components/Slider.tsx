@@ -10,7 +10,7 @@ export default function Slider() {
   description:
     "Take your operations to the next level with custom machinery solutions tailored to your unique workflow.",
   image:
-    "https://kavinco.s3.us-east-1.amazonaws.com/Gemini_Generated_Image_dxd8sxdxd8sxdxd8.png",
+    "/Slider-01.webp",
 
   // Button 1 → Opens phone dial pad
   button1: { 
