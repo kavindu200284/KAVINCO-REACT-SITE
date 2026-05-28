@@ -103,16 +103,18 @@ export default function Slider() {
           <img
             src={slide.image}
             alt={slide.title}
-            className="
-              w-full
+className="
+  w-full
 
-              h-[520px]
-              sm:h-[620px]
-              md:h-[720px]
+  h-[520px]
+  sm:h-[620px]
+  md:h-[720px]
 
-              object-cover
-              object-center
-            "
+  object-cover
+
+  object-right
+  sm:object-center
+"
           />
 
           {/* DARK OVERLAY */}
