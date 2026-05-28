@@ -19,7 +19,7 @@ export default function GalleryCarousel({
   );
 
   // default watermark
-  const watermark = watermarkUrl ?? "/logo.png";
+  const watermark = watermarkUrl ?? "/logo.webp";
   const wmOpacity = typeof watermarkOpacity === "number"
     ? Math.max(0, Math.min(1, watermarkOpacity))
     : 0.18;
