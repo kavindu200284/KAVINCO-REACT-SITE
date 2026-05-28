@@ -454,28 +454,35 @@ export default function ProductDetails() {
           >
 
             <h2
-              style={{
-                fontSize: "32px",
-                fontWeight: "700",
-                color: "#111",
-                marginBottom: "30px",
-              }}
-            >
-              Product Video
-            </h2>
+  style={{
+    fontSize: "26px",
+    fontWeight: "700",
+    color: "#111",
+    marginBottom: "24px",
+    textAlign: "center",
+  }}
+>
+  Product Video
+</h2>
+             
 
             {product.videoLink.includes("youtube") ||
             product.videoLink.includes("youtu.be") ? (
 
               <div
-                style={{
-                  position: "relative",
-                  width: "100%",
-                  paddingTop: "56.25%",
-                  borderRadius: "26px",
-                  overflow: "hidden",
-                }}
-              >
+  style={{
+    position: "relative",
+    width: "100%",
+    maxWidth: "850px",
+    margin: "0 auto",
+    paddingTop: "48%",
+    borderRadius: "22px",
+    overflow: "hidden",
+    background: "#000",
+    boxShadow: "0 12px 30px rgba(0,0,0,0.08)",
+  }}
+>
+              
 
                 <iframe
                   src={product.videoLink
