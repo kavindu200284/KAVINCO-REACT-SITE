@@ -16,7 +16,7 @@ export default function ECommerce() {
 
   const navigate = useNavigate();
 
-  const PRODUCTS_PER_PAGE = 15;
+  const PRODUCTS_PER_PAGE = 12;
 
   useEffect(() => {
 
@@ -26,7 +26,6 @@ export default function ECommerce() {
 
         const data = await getProducts();
 
-        // Sort by orderNumber ASC
         const sorted = data.sort(
           (a, b) => (a.orderNumber ?? 0) - (b.orderNumber ?? 0)
         );
@@ -39,7 +38,6 @@ export default function ECommerce() {
 
         console.log("Backend sleeping... retrying");
 
-        // Retry after 5 seconds
         setTimeout(() => {
           load();
         }, 5000);
@@ -52,9 +50,11 @@ export default function ECommerce() {
 
   }, []);
 
-  // Loading screen while backend wakes
+  // LOADING SCREEN
   if (loading) {
+
     return (
+
       <div
         style={{
           height: "100vh",
@@ -62,30 +62,31 @@ export default function ECommerce() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          background: "#fff",
+          background: "#f8f8f8",
         }}
       >
 
         <div
           style={{
-            width: "60px",
-            height: "60px",
+            width: "70px",
+            height: "70px",
             border: "6px solid #eee",
             borderTop: "6px solid #ff6600",
             borderRadius: "50%",
             animation: "spin 1s linear infinite",
-            marginBottom: "20px",
+            marginBottom: "25px",
           }}
         />
 
         <h2
           style={{
-            fontSize: "24px",
-            color: "#333",
+            fontSize: "28px",
+            color: "#222",
             marginBottom: "10px",
+            fontWeight: "700",
           }}
         >
-          Loading Products...
+          Loading Machinery
         </h2>
 
         <p
@@ -94,7 +95,7 @@ export default function ECommerce() {
             fontSize: "16px",
           }}
         >
-          Starting server, please wait...
+          Starting server and preparing products...
         </p>
 
         <style>
@@ -107,10 +108,12 @@ export default function ECommerce() {
         </style>
 
       </div>
+
     );
+
   }
 
-  // Filter products on typing by multiple fields safely
+  // FILTER
   const filtered = products.filter((p) => {
 
     const term = search.toLowerCase();
@@ -134,205 +137,312 @@ export default function ECommerce() {
   const totalPages = Math.ceil(filtered.length / PRODUCTS_PER_PAGE);
 
   return (
-    <div>
+
+    <div
+      style={{
+        background: "#f5f5f5",
+        minHeight: "100vh",
+      }}
+    >
 
       <Header />
 
-      <div
+      {/* HERO SECTION */}
+      <section
         style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          padding: "0 20px"
+          paddingTop: "110px",
+          paddingBottom: "40px",
+          background: "linear-gradient(to bottom, #ffffff, #f5f5f5)",
         }}
       >
 
-        {/* Search Bar */}
         <div
           style={{
-            padding: "20px 0",
-            display: "flex",
-            justifyContent: "center"
+            maxWidth: "1300px",
+            margin: "0 auto",
+            padding: "0 20px",
           }}
         >
 
-          <input
-            type="text"
-            placeholder="Search product..."
-            value={search}
-            onChange={(e) => {
-              setSearch(e.target.value);
-              setCurrentPage(1);
-            }}
+          {/* TITLE */}
+          <div
             style={{
-              width: "60%",
-              maxWidth: "400px",
-              padding: "10px 12px",
-              border: "1px solid #ccc",
-              borderRadius: "8px",
-              fontSize: "16px",
+              textAlign: "center",
+              marginBottom: "40px",
             }}
-          />
+          >
 
-        </div>
-
-        {/* Product Grid */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
-            gap: "20px",
-            margin: "20px 0",
-          }}
-        >
-
-          {currentProducts.map((p: Product) => (
-
-            <div
-              key={p._id}
-              className="product-card"
+            <h1
               style={{
-                position: "relative",
-                transition: "0.3s",
+                fontSize: "clamp(32px, 5vw, 58px)",
+                fontWeight: "800",
+                color: "#111",
+                lineHeight: "1.1",
+                marginBottom: "16px",
               }}
             >
+              Modern Machinery
+              <br />
+              For Smart Industries
+            </h1>
 
-              {/* Sri Lanka Flag */}
-              {p.countryOfOrigin &&
-                p.countryOfOrigin.toLowerCase() === "sri lanka" && (
+            <p
+              style={{
+                maxWidth: "760px",
+                margin: "0 auto",
+                color: "#666",
+                fontSize: "18px",
+                lineHeight: "1.7",
+              }}
+            >
+              Explore high-performance industrial machinery engineered
+              for productivity, reliability, and modern manufacturing environments.
+            </p>
 
-                  <img
-                    src="/flag-1.png"
-                    alt="Sri Lanka"
+          </div>
+
+          {/* SEARCH */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: "50px",
+            }}
+          >
+
+            <input
+              type="text"
+              placeholder="Search machinery..."
+              value={search}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                setCurrentPage(1);
+              }}
+              style={{
+                width: "100%",
+                maxWidth: "550px",
+                padding: "16px 22px",
+                borderRadius: "18px",
+                border: "1px solid rgba(0,0,0,0.08)",
+                fontSize: "16px",
+                background: "white",
+                boxShadow: "0 6px 18px rgba(0,0,0,0.05)",
+                outline: "none",
+              }}
+            />
+
+          </div>
+
+          {/* PRODUCT GRID */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+              gap: "28px",
+            }}
+          >
+
+            {currentProducts.map((p: Product) => (
+
+              <div
+                key={p._id}
+                className="product-card"
+                style={{
+                  borderTop: "4px solid #ff6600",
+                }}
+              >
+
+                {/* FLAG */}
+                {p.countryOfOrigin &&
+                  p.countryOfOrigin.toLowerCase() === "sri lanka" && (
+
+                    <img
+                      src="/flag-1.png"
+                      alt="Sri Lanka"
+                      style={{
+                        position: "absolute",
+                        top: "-22px",
+                        right: "-22px",
+                        width: "95px",
+                        height: "95px",
+                        zIndex: 5,
+                        pointerEvents: "none",
+                      }}
+                    />
+
+                  )}
+
+                {/* IMAGE */}
+                {p.image1Url && (
+
+                  <div
                     style={{
-                      position: "absolute",
-                      top: "-20px",
-                      right: "-10px",
-                      width: "90px",
-                      height: "90px",
-                      rotate: "0",
-                      zIndex: 2,
+                      width: "100%",
+                      height: "260px",
+                      overflow: "hidden",
+                      borderRadius: "18px",
+                      background: "#fff",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      padding: "8px",
                     }}
-                  />
+                  >
+
+                    <img
+                      src={p.image1Url}
+                      alt={p.name}
+                      loading="lazy"
+                      decoding="async"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "contain",
+                        borderRadius: "18px",
+                      }}
+                    />
+
+                  </div>
 
                 )}
 
-              {p.image1Url && (
-
-                <img
-                  src={p.image1Url}
-                  alt={p.name}
-                  loading="lazy"
-                  decoding="async"
+                {/* CONTENT */}
+                <div
                   style={{
                     width: "100%",
-                    height: "200px",
-                    objectFit: "cover",
-                    borderRadius: "8px",
+                    paddingTop: "18px",
+                    display: "flex",
+                    flexDirection: "column",
+                    flexGrow: 1,
                   }}
-                />
-
-              )}
-
-              <h3
-                style={{
-                  marginTop: "10px",
-                  fontSize: "18px",
-                  fontWeight: "bold",
-                  textAlign: "center",
-                }}
-              >
-                {p.name}
-              </h3>
-
-              <p
-                style={{
-                  fontSize: "14px",
-                  color: "#666",
-                  textAlign: "center"
-                }}
-              >
-                Country: {p.countryOfOrigin || "N/A"}
-              </p>
-
-              <div
-                style={{
-                  marginTop: "10px",
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              >
-
-                <button
-                  style={{
-                    padding: "10px 14px",
-                    borderRadius: "6px",
-                    border: "none",
-                    background: "#ff6600",
-                    color: "white",
-                    cursor: "pointer",
-                    fontWeight: "bold",
-                  }}
-                  onClick={() => navigate(`/product/${p._id}`)}
                 >
-                  See More
-                </button>
+
+                  <h3
+                    style={{
+                      fontSize: "20px",
+                      fontWeight: "700",
+                      color: "#111",
+                      textAlign: "center",
+                      marginBottom: "10px",
+                      lineHeight: "1.4",
+                    }}
+                  >
+                    {p.name}
+                  </h3>
+
+                  <p
+                    style={{
+                      color: "#777",
+                      textAlign: "center",
+                      fontSize: "14px",
+                      marginBottom: "20px",
+                    }}
+                  >
+                    Country: {p.countryOfOrigin || "N/A"}
+                  </p>
+
+                  {/* BUTTON */}
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      marginTop: "auto",
+                    }}
+                  >
+
+                    <button
+                      onClick={() => navigate(`/product/${p._id}`)}
+                      style={{
+                        padding: "10px 18px",
+                        borderRadius: "12px",
+                        border: "none",
+                        background: "#ff6600",
+                        color: "white",
+                        fontWeight: "600",
+                        fontSize: "14px",
+                        cursor: "pointer",
+                        transition: "0.3s",
+                        boxShadow: "0 6px 14px rgba(255,102,0,0.18)",
+                      }}
+                    >
+                      View More
+                    </button>
+
+                  </div>
+
+                </div>
 
               </div>
 
+            ))}
+
+          </div>
+
+          {/* PAGINATION */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "14px",
+              marginTop: "60px",
+              flexWrap: "wrap",
+            }}
+          >
+
+            <button
+              disabled={currentPage === 1}
+              onClick={() => setCurrentPage((prev) => prev - 1)}
+              style={{
+                padding: "12px 20px",
+                borderRadius: "14px",
+                border: "none",
+                background: "#eaeaea",
+                cursor: "pointer",
+                fontWeight: "600",
+              }}
+            >
+              Prev
+            </button>
+
+            <div
+              style={{
+                padding: "12px 18px",
+                borderRadius: "14px",
+                background: "white",
+                fontWeight: "700",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
+              }}
+            >
+              Page {currentPage} of {totalPages}
             </div>
 
-          ))}
+            <button
+              disabled={currentPage === totalPages}
+              onClick={() => setCurrentPage((prev) => prev + 1)}
+              style={{
+                padding: "12px 20px",
+                borderRadius: "14px",
+                border: "none",
+                background: "#ff6600",
+                color: "white",
+                cursor: "pointer",
+                fontWeight: "600",
+              }}
+            >
+              Next
+            </button>
+
+          </div>
 
         </div>
 
-        {/* Pagination */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginBottom: "30px",
-            gap: "10px",
-          }}
-        >
-
-          <button
-            disabled={currentPage === 1}
-            onClick={() => setCurrentPage((prev) => prev - 1)}
-            style={{
-              padding: "10px 15px",
-              borderRadius: "8px",
-              border: "1px solid #999",
-              background: "#eee",
-              cursor: "pointer",
-            }}
-          >
-            Prev
-          </button>
-
-          <span style={{ padding: "10px 15px" }}>
-            Page {currentPage} of {totalPages}
-          </span>
-
-          <button
-            disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage((prev) => prev + 1)}
-            style={{
-              padding: "10px 15px",
-              borderRadius: "8px",
-              border: "1px solid #999",
-              background: "#eee",
-              cursor: "pointer",
-            }}
-          >
-            Next
-          </button>
-
-        </div>
-
-      </div>
+      </section>
 
       <Footer />
 
     </div>
+
   );
+
 }
