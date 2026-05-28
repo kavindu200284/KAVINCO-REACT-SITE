@@ -15,7 +15,7 @@ export default function Slider() {
   // Button 1 → Opens phone dial pad
   button1: { 
     text: "Contact us", 
-    link: "tel:+919876543210"   // ← replace with your real number
+    link: "tel:+94 770414713"   // ← replace with your real number
   },
 
   // Button 2 → Scroll to Services section on homepage
@@ -31,9 +31,9 @@ export default function Slider() {
       description:
         "Upgrade your operations with modern, reliable, and high-performance machinery built for tomorrow’s industry.",
       image:
-        "https://kavinco.s3.us-east-1.amazonaws.com/Gemini_Generated_Image_u5f65uu5f65uu5f6.png",
+        "/Slider-03.webp",
       button1: { text: "Shop Now", link: "/brandnew" },
-      button2: { text: "Contact Us", link: "tel:+919876543210" },
+      button2: { text: "Contact Us", link: "tel:+94 770414713" },
     },
     {
       id: 3,
@@ -41,9 +41,9 @@ export default function Slider() {
       description:
         "Shop high-quality nails, nuts, and fasteners from our online store and keep every project running smoothly.",
       image:
-        "https://kavinco.s3.us-east-1.amazonaws.com/5641d69f75a1bf8c7432288c0e39c327.jpg",
+        "/Slider-02.webp",
       button1: { text: "Shop Now", link: "/shop" },
-      button2: { text: "Contact Us", link: "tel:+919876543210" },
+      button2: { text: "Contact Us", link: "tel:+94 770414713" },
     },
   ];
 
