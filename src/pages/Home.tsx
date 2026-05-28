@@ -268,7 +268,7 @@ export default function Home() {
                       w-full sm:w-auto
                     "
                   >
-                    Explore Machinery →
+                    Shop →
                   </div>
 
                   {/* WhatsApp Button */}
