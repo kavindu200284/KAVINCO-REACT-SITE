@@ -11,7 +11,6 @@ export default function ProductDetails() {
 
   const [product, setProduct] = useState<Product | null>(null);
 
-  // Main image state
   const [mainImage, setMainImage] = useState<string | null>(null);
 
   useEffect(() => {
@@ -26,7 +25,6 @@ export default function ProductDetails() {
 
         setProduct(found || null);
 
-        // Type-safe: convert undefined to null
         if (found) {
           setMainImage(found.image1Url ?? null);
         }
@@ -35,7 +33,6 @@ export default function ProductDetails() {
 
         console.log("Backend sleeping... retrying");
 
-        // Retry after 5 seconds
         setTimeout(() => {
           load();
         }, 5000);
@@ -46,9 +43,11 @@ export default function ProductDetails() {
 
     load();
 
+    window.scrollTo(0, 0);
+
   }, [id]);
 
-  // Professional loading screen
+  // LOADING SCREEN
   if (!product) {
 
     return (
@@ -60,60 +59,47 @@ export default function ProductDetails() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          background: "#fff",
+          background: "#ffffff",
         }}
       >
 
-        {/* Spinner */}
         <div
           style={{
             width: "65px",
             height: "65px",
-            border: "6px solid #eee",
-            borderTop: "6px solid #ff6600",
+            border: "5px solid #eee",
+            borderTop: "5px solid #ff6600",
             borderRadius: "50%",
             animation: "spin 1s linear infinite",
             marginBottom: "25px",
           }}
         />
 
-        {/* Title */}
         <h2
           style={{
-            fontSize: "26px",
-            fontWeight: "bold",
-            color: "#222",
+            fontSize: "28px",
+            fontWeight: "700",
+            color: "#111",
             marginBottom: "10px",
           }}
         >
-          Loading Product...
+          Loading Product
         </h2>
 
-        {/* Subtitle */}
         <p
           style={{
-            color: "#777",
-            fontSize: "16px",
-            textAlign: "center",
-            maxWidth: "320px",
-            lineHeight: "1.6",
+            color: "#666",
+            fontSize: "15px",
           }}
         >
-          Starting server and loading product details.
-          Please wait a few seconds...
+          Preparing product details...
         </p>
 
-        {/* Spinner Animation */}
         <style>
           {`
             @keyframes spin {
-              0% {
-                transform: rotate(0deg);
-              }
-
-              100% {
-                transform: rotate(360deg);
-              }
+              0% { transform: rotate(0deg); }
+              100% { transform: rotate(360deg); }
             }
           `}
         </style>
@@ -126,62 +112,75 @@ export default function ProductDetails() {
 
   return (
 
-    <div>
+    <div
+      style={{
+        background: "#ffffff",
+        minHeight: "100vh",
+      }}
+    >
 
       <Header />
 
-      {/* BACK BUTTON */}
-      <button
-        onClick={() => window.history.back()}
-        style={{
-          marginTop: "40px",
-          padding: "12px 25px",
-          background: "#ff6600",
-          color: "white",
-          border: "none",
-          borderRadius: "8px",
-          cursor: "pointer",
-          fontSize: "16px",
-          marginLeft: "30px",
-          marginBottom: "20px",
-        }}
-      >
-        Back
-      </button>
+      {/* TOP SPACE */}
+      <div style={{ height: "95px" }} />
 
+      {/* BACK BUTTON */}
       <div
         style={{
-          maxWidth: "1100px",
+          maxWidth: "1300px",
           margin: "0 auto",
-          padding: "20px",
+          padding: "0 20px",
         }}
       >
 
-        {/* IMAGES SECTION */}
-        <div
+        <button
+          onClick={() => window.history.back()}
           style={{
-            display: "flex",
-            gap: "15px",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            flexDirection: "column",
-            alignItems: "center",
+            padding: "10px 18px",
+            border: "1px solid #eee",
+            borderRadius: "12px",
+            background: "#fff",
+            color: "#111",
+            fontWeight: "600",
+            cursor: "pointer",
+            transition: "0.3s",
           }}
         >
+          ← Back
+        </button>
+
+      </div>
+
+      {/* MAIN SECTION */}
+      <div
+        className="product-layout"
+        style={{
+          maxWidth: "1350px",
+          margin: "35px auto 80px",
+          padding: "0 20px",
+          display: "grid",
+          gridTemplateColumns: "1.2fr 0.8fr",
+          gap: "60px",
+          alignItems: "start",
+        }}
+      >
+
+        {/* IMAGE SECTION */}
+        <div>
 
           {/* MAIN IMAGE */}
           <div
-            className="main-image-frame"
+            className="main-image-box"
             style={{
               width: "100%",
-              maxWidth: "600px",
-              height: "350px",
-              backgroundColor: "#ffffffff",
-              borderRadius: "12px",
+              height: "650px",
+              borderRadius: "28px",
+              background: "#fff",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
               overflow: "hidden",
+              border: "1px solid #f1f1f1",
             }}
           >
 
@@ -190,11 +189,12 @@ export default function ProductDetails() {
               <img
                 src={mainImage}
                 alt={product.name}
+                loading="lazy"
+                decoding="async"
                 style={{
                   width: "100%",
                   height: "100%",
                   objectFit: "contain",
-                  transition: "0.3s ease",
                 }}
               />
 
@@ -202,159 +202,199 @@ export default function ProductDetails() {
 
           </div>
 
-          {/* Mobile frame height */}
-          <style>
-            {`
-              @media (max-width: 768px) {
-                .main-image-frame {
-                  height: 250px !important;
-                }
-              }
-            `}
-          </style>
-
-          {/* Thumbnail Images */}
+          {/* THUMBNAILS */}
           <div
             style={{
               display: "flex",
-              flexDirection: "row",
-              gap: "10px",
-              marginTop: "10px",
-              justifyContent: "center",
+              gap: "14px",
+              marginTop: "22px",
+              flexWrap: "wrap",
             }}
           >
 
-            {/* Thumb 1 */}
-            {product.image1Url && (
+            {[product.image1Url, product.image2Url, product.image3Url]
+              .filter(Boolean)
+              .map((img, index) => (
 
-              <img
-                src={product.image1Url}
-                onClick={() => setMainImage(product.image1Url ?? null)}
-                style={{
-                  width: "120px",
-                  height: "120px",
-                  objectFit: "cover",
-                  borderRadius: "8px",
-                  cursor: "pointer",
-                  border:
-                    mainImage === product.image1Url
-                      ? "3px solid blue"
-                      : "2px solid #ffffffff",
-                }}
-              />
+                <div
+                  key={index}
+                  onClick={() => setMainImage(img ?? null)}
+                  style={{
+                    width: "95px",
+                    height: "95px",
+                    borderRadius: "18px",
+                    background: "#fff",
+                    border:
+                      mainImage === img
+                        ? "2px solid #ff6600"
+                        : "1px solid #eee",
+                    cursor: "pointer",
+                    overflow: "hidden",
+                    transition: "0.3s",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    padding: "8px",
+                  }}
+                >
 
-            )}
+                  <img
+                    src={img}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "contain",
+                    }}
+                  />
 
-            {/* Thumb 2 */}
-            {product.image2Url && (
+                </div>
 
-              <img
-                src={product.image2Url}
-                onClick={() => setMainImage(product.image2Url ?? null)}
-                style={{
-                  width: "120px",
-                  height: "120px",
-                  objectFit: "cover",
-                  borderRadius: "8px",
-                  cursor: "pointer",
-                  border:
-                    mainImage === product.image2Url
-                      ? "3px solid blue"
-                      : "2px solid #ffffffff",
-                }}
-              />
-
-            )}
-
-            {/* Thumb 3 */}
-            {product.image3Url && (
-
-              <img
-                src={product.image3Url}
-                onClick={() => setMainImage(product.image3Url ?? null)}
-                style={{
-                  width: "120px",
-                  height: "120px",
-                  objectFit: "cover",
-                  borderRadius: "8px",
-                  cursor: "pointer",
-                  border:
-                    mainImage === product.image3Url
-                      ? "3px solid blue"
-                      : "2px solid #ffffffff",
-                }}
-              />
-
-            )}
+              ))}
 
           </div>
 
         </div>
 
         {/* DETAILS SECTION */}
-        <div style={{ marginTop: "25px" }}>
+        <div
+          style={{
+            position: "sticky",
+            top: "110px",
+          }}
+        >
 
+          {/* PRODUCT TITLE */}
           <h1
             style={{
-              fontSize: "28px",
+              fontSize: "clamp(28px, 4vw, 44px)",
               fontWeight: "700",
-              marginBottom: "30px",
-              marginRight: "10px",
-              marginLeft: "10px"
+              color: "#111",
+              lineHeight: "1.2",
+              marginBottom: "22px",
             }}
           >
             {product.title || product.name}
           </h1>
 
-          <p
-            style={{
-              marginRight: "10px",
-              marginLeft: "10px",
-              fontSize: "16px",
-              marginBottom: "5px"
-            }}
-          >
-            <strong>Item Code:</strong> {product.itemCode || "N/A"}
-          </p>
-
-          <p
-            style={{
-              marginRight: "10px",
-              marginLeft: "10px",
-              fontSize: "16px",
-              marginBottom: "5px"
-            }}
-          >
-            <strong>Country of Origin:</strong>{" "}
-            {product.countryOfOrigin || "N/A"}
-          </p>
-
-          <p
-            style={{
-              marginRight: "10px",
-              marginLeft: "10px",
-              fontSize: "16px",
-              marginBottom: "5px"
-            }}
-          >
-            <strong>Condition:</strong> {product.condition || "N/A"}
-          </p>
-
+          {/* META INFO */}
           <div
             style={{
-              marginRight: "10px",
-              marginLeft: "10px",
-              marginTop: "70px",
-              fontSize: "17px"
+              display: "flex",
+              flexDirection: "column",
+              gap: "14px",
+              marginBottom: "35px",
             }}
           >
 
-            <strong>Description:</strong>
+            <div
+              style={{
+                paddingBottom: "14px",
+                borderBottom: "1px solid #f2f2f2",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "13px",
+                  color: "#999",
+                  marginBottom: "4px",
+                  letterSpacing: "0.5px",
+                }}
+              >
+                ITEM CODE
+              </div>
+
+              <div
+                style={{
+                  fontSize: "17px",
+                  fontWeight: "600",
+                  color: "#111",
+                }}
+              >
+                {product.itemCode || "N/A"}
+              </div>
+            </div>
+
+            <div
+              style={{
+                paddingBottom: "14px",
+                borderBottom: "1px solid #f2f2f2",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "13px",
+                  color: "#999",
+                  marginBottom: "4px",
+                  letterSpacing: "0.5px",
+                }}
+              >
+                COUNTRY OF ORIGIN
+              </div>
+
+              <div
+                style={{
+                  fontSize: "17px",
+                  fontWeight: "600",
+                  color: "#111",
+                }}
+              >
+                {product.countryOfOrigin || "N/A"}
+              </div>
+            </div>
+
+            <div
+              style={{
+                paddingBottom: "14px",
+                borderBottom: "1px solid #f2f2f2",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "13px",
+                  color: "#999",
+                  marginBottom: "4px",
+                  letterSpacing: "0.5px",
+                }}
+              >
+                CONDITION
+              </div>
+
+              <div
+                style={{
+                  fontSize: "17px",
+                  fontWeight: "600",
+                  color: "#111",
+                }}
+              >
+                {product.condition || "N/A"}
+              </div>
+            </div>
+
+          </div>
+
+          {/* DESCRIPTION */}
+          <div
+            style={{
+              marginTop: "10px",
+            }}
+          >
+
+            <h2
+              style={{
+                fontSize: "22px",
+                fontWeight: "700",
+                marginBottom: "14px",
+                color: "#111",
+              }}
+            >
+              Description
+            </h2>
 
             <p
               style={{
-                marginTop: "5px",
-                lineHeight: "1.6"
+                color: "#666",
+                lineHeight: "1.9",
+                fontSize: "16px",
               }}
             >
               {product.description || "No description available."}
@@ -362,52 +402,95 @@ export default function ProductDetails() {
 
           </div>
 
-        </div>
-
-        {/* VIDEO SECTION */}
-        {product.videoLink && (
-
+          {/* CONTACT BUTTON */}
           <div
             style={{
-              marginRight: "10px",
-              marginLeft: "10px",
-              marginTop: "40px"
+              marginTop: "40px",
             }}
           >
 
-            <h3
+            <a
+              href="https://wa.me/94770414713"
+              target="_blank"
               style={{
-                fontSize: "22px",
-                marginBottom: "10px"
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "15px 26px",
+                borderRadius: "16px",
+                background: "#ff6600",
+                color: "white",
+                textDecoration: "none",
+                fontWeight: "600",
+                fontSize: "16px",
+                boxShadow: "0 10px 24px rgba(255,102,0,0.18)",
+              }}
+            >
+              Contact About This Machine
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* VIDEO SECTION */}
+      {product.videoLink && (
+
+        <div
+          style={{
+            maxWidth: "1300px",
+            margin: "0 auto",
+            padding: "0 20px 80px",
+          }}
+        >
+
+          <div
+            style={{
+              borderTop: "1px solid #f2f2f2",
+              paddingTop: "50px",
+            }}
+          >
+
+            <h2
+              style={{
+                fontSize: "32px",
+                fontWeight: "700",
+                color: "#111",
+                marginBottom: "30px",
               }}
             >
               Product Video
-            </h3>
+            </h2>
 
             {product.videoLink.includes("youtube") ||
             product.videoLink.includes("youtu.be") ? (
 
               <div
                 style={{
-                  display: "flex",
-                  justifyContent: "center",
+                  position: "relative",
                   width: "100%",
-                  marginTop: "20px",
+                  paddingTop: "56.25%",
+                  borderRadius: "26px",
+                  overflow: "hidden",
                 }}
               >
 
                 <iframe
-                  width="75%"
-                  height="320"
                   src={product.videoLink
                     .replace("watch?v=", "embed/")
                     .replace("youtu.be/", "www.youtube.com/embed/")}
+                  allowFullScreen
                   style={{
-                    borderRadius: "10px",
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
                     border: "none",
                   }}
-                  allowFullScreen
-                ></iframe>
+                />
 
               </div>
 
@@ -418,11 +501,8 @@ export default function ProductDetails() {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  fontSize: "18px",
-                  color: "blue",
-                  display: "block",
-                  textAlign: "center",
-                  marginTop: "20px",
+                  color: "#ff6600",
+                  fontWeight: "700",
                 }}
               >
                 Watch Video
@@ -432,9 +512,35 @@ export default function ProductDetails() {
 
           </div>
 
-        )}
+        </div>
 
-      </div>
+      )}
+
+      {/* RESPONSIVE */}
+      <style>
+        {`
+          @media (max-width: 992px) {
+
+            .product-layout {
+              grid-template-columns: 1fr !important;
+              gap: 40px !important;
+            }
+
+            .main-image-box {
+              height: 420px !important;
+            }
+
+          }
+
+          @media (max-width: 768px) {
+
+            .main-image-box {
+              height: 300px !important;
+            }
+
+          }
+        `}
+      </style>
 
       <Footer />
 
