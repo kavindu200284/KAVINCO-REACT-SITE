@@ -3,36 +3,118 @@ import { getProducts } from "../services/productService";
 import { Product } from "../types/Product";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import "./ECommerce.css"; // Make sure to import the CSS
+import "./ECommerce.css";
 import { useNavigate } from "react-router-dom";
 
-
-
 export default function ECommerce() {
+
   const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+
   const navigate = useNavigate();
+
   const PRODUCTS_PER_PAGE = 15;
 
   useEffect(() => {
+
     async function load() {
-      const data = await getProducts();
 
-      // Sort by orderNumber ASC (not displayed)
-      const sorted = data.sort(
-        (a, b) => (a.orderNumber ?? 0) - (b.orderNumber ?? 0)
-      );
+      try {
 
-      setProducts(sorted);
+        const data = await getProducts();
+
+        // Sort by orderNumber ASC
+        const sorted = data.sort(
+          (a, b) => (a.orderNumber ?? 0) - (b.orderNumber ?? 0)
+        );
+
+        setProducts(sorted);
+
+        setLoading(false);
+
+      } catch (err) {
+
+        console.log("Backend sleeping... retrying");
+
+        // Retry after 5 seconds
+        setTimeout(() => {
+          load();
+        }, 5000);
+
+      }
+
     }
 
     load();
+
   }, []);
+
+  // Loading screen while backend wakes
+  if (loading) {
+    return (
+      <div
+        style={{
+          height: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          background: "#fff",
+        }}
+      >
+
+        <div
+          style={{
+            width: "60px",
+            height: "60px",
+            border: "6px solid #eee",
+            borderTop: "6px solid #ff6600",
+            borderRadius: "50%",
+            animation: "spin 1s linear infinite",
+            marginBottom: "20px",
+          }}
+        />
+
+        <h2
+          style={{
+            fontSize: "24px",
+            color: "#333",
+            marginBottom: "10px",
+          }}
+        >
+          Loading Products...
+        </h2>
+
+        <p
+          style={{
+            color: "#777",
+            fontSize: "16px",
+          }}
+        >
+          Starting server, please wait...
+        </p>
+
+        <style>
+          {`
+            @keyframes spin {
+              0% { transform: rotate(0deg); }
+              100% { transform: rotate(360deg); }
+            }
+          `}
+        </style>
+
+      </div>
+    );
+  }
 
   // Filter products on typing by multiple fields safely
   const filtered = products.filter((p) => {
+
     const term = search.toLowerCase();
+
     return (
       (p.name?.toLowerCase() || "").includes(term) ||
       (p.title?.toLowerCase() || "").includes(term) ||
@@ -40,28 +122,46 @@ export default function ECommerce() {
       (p.description?.toLowerCase() || "").includes(term) ||
       (p.countryOfOrigin?.toLowerCase() || "").includes(term)
     );
+
   });
 
   const lastProduct = currentPage * PRODUCTS_PER_PAGE;
+
   const firstProduct = lastProduct - PRODUCTS_PER_PAGE;
+
   const currentProducts = filtered.slice(firstProduct, lastProduct);
 
   const totalPages = Math.ceil(filtered.length / PRODUCTS_PER_PAGE);
 
   return (
     <div>
+
       <Header />
 
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
+      <div
+        style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "0 20px"
+        }}
+      >
+
         {/* Search Bar */}
-        <div style={{ padding: "20px 0", display: "flex", justifyContent: "center" }}>
+        <div
+          style={{
+            padding: "20px 0",
+            display: "flex",
+            justifyContent: "center"
+          }}
+        >
+
           <input
             type="text"
             placeholder="Search product..."
             value={search}
             onChange={(e) => {
               setSearch(e.target.value);
-              setCurrentPage(1); // Reset page when typing
+              setCurrentPage(1);
             }}
             style={{
               width: "60%",
@@ -72,6 +172,7 @@ export default function ECommerce() {
               fontSize: "16px",
             }}
           />
+
         </div>
 
         {/* Product Grid */}
@@ -83,13 +184,24 @@ export default function ECommerce() {
             margin: "20px 0",
           }}
         >
+
           {currentProducts.map((p: Product) => (
-            <div key={p._id} className="product-card" style={{ position: "relative" }}>
+
+            <div
+              key={p._id}
+              className="product-card"
+              style={{
+                position: "relative",
+                transition: "0.3s",
+              }}
+            >
+
               {/* Sri Lanka Flag */}
               {p.countryOfOrigin &&
                 p.countryOfOrigin.toLowerCase() === "sri lanka" && (
+
                   <img
-                    src="/flag-1.png" // Put your flag.png in public folder
+                    src="/flag-1.png"
                     alt="Sri Lanka"
                     style={{
                       position: "absolute",
@@ -97,15 +209,19 @@ export default function ECommerce() {
                       right: "-10px",
                       width: "90px",
                       height: "90px",
-                      rotate:"0",
+                      rotate: "0",
+                      zIndex: 2,
                     }}
                   />
+
                 )}
 
               {p.image1Url && (
+
                 <img
                   src={p.image1Url}
                   alt={p.name}
+                  loading="lazy"
                   style={{
                     width: "100%",
                     height: "200px",
@@ -113,6 +229,7 @@ export default function ECommerce() {
                     borderRadius: "8px",
                   }}
                 />
+
               )}
 
               <h3
@@ -126,27 +243,45 @@ export default function ECommerce() {
                 {p.name}
               </h3>
 
-              <p style={{ fontSize: "14px", color: "#666", textAlign: "center" }}>
+              <p
+                style={{
+                  fontSize: "14px",
+                  color: "#666",
+                  textAlign: "center"
+                }}
+              >
                 Country: {p.countryOfOrigin || "N/A"}
               </p>
 
-              <div style={{ marginTop: "10px" }}>
+              <div
+                style={{
+                  marginTop: "10px",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+
                 <button
                   style={{
-                    padding: "8px 12px",
+                    padding: "10px 14px",
                     borderRadius: "6px",
                     border: "none",
                     background: "#ff6600",
                     color: "white",
                     cursor: "pointer",
+                    fontWeight: "bold",
                   }}
                   onClick={() => navigate(`/product/${p._id}`)}
                 >
                   See More
                 </button>
+
               </div>
+
             </div>
+
           ))}
+
         </div>
 
         {/* Pagination */}
@@ -158,6 +293,7 @@ export default function ECommerce() {
             gap: "10px",
           }}
         >
+
           <button
             disabled={currentPage === 1}
             onClick={() => setCurrentPage((prev) => prev - 1)}
@@ -189,10 +325,13 @@ export default function ECommerce() {
           >
             Next
           </button>
+
         </div>
+
       </div>
 
       <Footer />
+
     </div>
   );
 }
