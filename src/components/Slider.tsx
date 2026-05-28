@@ -8,30 +8,32 @@ export default function Slider() {
 
     {
       id: 1,
+
       title: "Build Smarter. Perform Better.",
 
       description:
-        "Take your operations to the next level with custom machinery solutions tailored to your unique workflow.",
+        "Take your operations to the next level with custom machinery solutions tailored to your workflow.",
 
       image: "/Slider-01.webp",
 
       button1: {
-        text: "Contact us",
+        text: "Contact Us",
         link: "tel:+94770414713"
       },
 
       button2: {
         text: "Learn More",
-        link: ""
+        link: "/brandnew"
       },
     },
 
     {
       id: 2,
+
       title: "Smart Machinery. Stronger Performance.",
 
       description:
-        "Upgrade your operations with modern, reliable, and high-performance machinery built for tomorrow’s industry.",
+        "Upgrade your operations with reliable and high-performance industrial machinery.",
 
       image: "/Slider-03.webp",
 
@@ -48,10 +50,11 @@ export default function Slider() {
 
     {
       id: 3,
+
       title: "Maintenance That Powers Your Production",
 
       description:
-        "From preventive servicing to emergency breakdown repairs — we keep your machinery reliable, efficient, and ready for every shift.",
+        "Preventive servicing and emergency machinery repair solutions for uninterrupted production.",
 
       image: "/Slider-02.webp",
 
@@ -70,11 +73,13 @@ export default function Slider() {
 
   const [current, setCurrent] = useState(0);
 
-  // Auto rotate every 6 seconds
+  // AUTO SLIDER
   useEffect(() => {
 
     const interval = setInterval(() => {
+
       setCurrent((prev) => (prev + 1) % slides.length);
+
     }, 6000);
 
     return () => clearInterval(interval);
@@ -83,7 +88,7 @@ export default function Slider() {
 
   return (
 
-    <div className="relative w-full overflow-hidden bg-gray-900">
+    <div className="relative w-full overflow-hidden bg-black">
 
       {slides.map((slide, index) => (
 
@@ -94,100 +99,204 @@ export default function Slider() {
           }`}
         >
 
-          {/* Full Responsive Image */}
+          {/* BACKGROUND IMAGE */}
           <img
             src={slide.image}
             alt={slide.title}
-            className="w-full h-auto object-contain"
+            className="
+              w-full
+
+              h-[520px]
+              sm:h-[620px]
+              md:h-[720px]
+
+              object-cover
+              object-center
+            "
           />
 
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/20"></div>
+          {/* DARK OVERLAY */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/25"></div>
 
-          {/* Content */}
+          {/* CONTENT */}
           <div
             className="
               absolute inset-0 z-30
-              flex flex-col justify-center
-              px-4 sm:px-8 lg:px-12
-              max-w-6xl mx-auto
+
+              flex items-center
+
+              overflow-hidden
             "
           >
 
-            <h1
+            <div
               className="
-                text-xl
-                sm:text-4xl
-                md:text-5xl
-                lg:text-6xl
-                font-bold
-                text-white
-                mb-3 sm:mb-6
-                leading-tight
-                drop-shadow-lg
-                max-w-full sm:max-w-3xl
+                w-full
+                max-w-7xl
+                mx-auto
+
+                px-5
+                sm:px-8
+                md:px-12
+                lg:px-16
+
+                py-10
+                sm:py-16
               "
             >
-              {slide.title}
-            </h1>
 
-            <p
-              className="
-                text-xs
-                sm:text-lg
-                md:text-xl
-                text-gray-200
-                mb-4 sm:mb-8
-                max-w-full sm:max-w-2xl
-                leading-relaxed
-              "
-            >
-              {slide.description}
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-
-              <Link
-                to={slide.button1.link}
+              <div
                 className="
-                  inline-flex items-center justify-center
-                  bg-orange-600 hover:bg-orange-500
-                  text-white
-                  px-4 sm:px-8
-                  py-2 sm:py-4
-                  rounded-lg
-                  text-sm sm:text-lg
-                  font-semibold
-                  transition-all
-                  transform hover:scale-105
-                  shadow-md
-                  w-fit
+                  max-w-[320px]
+                  sm:max-w-xl
+                  md:max-w-2xl
                 "
               >
-                {slide.button1.text}
 
-                <ChevronRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+                {/* TITLE */}
+                <h1
+                  className="
+                    text-[18px]
+                    leading-[1.15]
 
-              </Link>
+                    sm:text-4xl
+                    md:text-5xl
+                    lg:text-6xl
 
-              <Link
-                to={slide.button2.link}
-                className="
-                  inline-flex items-center justify-center
-                  bg-gray-800 hover:bg-gray-700
-                  text-white
-                  px-4 sm:px-8
-                  py-2 sm:py-4
-                  rounded-lg
-                  text-sm sm:text-lg
-                  font-semibold
-                  transition-all
-                  border border-gray-700
-                  w-fit
-                "
-              >
-                {slide.button2.text}
-              </Link>
+                    font-bold
+                    text-white
+
+                    mb-3
+                    sm:mb-6
+
+                    drop-shadow-xl
+                  "
+                >
+                  {slide.title}
+                </h1>
+
+                {/* DESCRIPTION */}
+                <p
+                  className="
+                    text-[11px]
+                    leading-relaxed
+
+                    sm:text-base
+                    md:text-lg
+                    lg:text-xl
+
+                    text-gray-200
+
+                    mb-5
+                    sm:mb-8
+
+                    max-w-full
+                    sm:max-w-xl
+                    md:max-w-2xl
+                  "
+                >
+                  {slide.description}
+                </p>
+
+                {/* BUTTONS */}
+                <div
+                  className="
+                    flex
+                    flex-wrap
+
+                    gap-2
+                    sm:gap-4
+
+                    mt-2
+                  "
+                >
+
+                  {/* BUTTON 1 */}
+                  <Link
+                    to={slide.button1.link}
+                    className="
+                      inline-flex
+                      items-center
+                      justify-center
+
+                      bg-orange-600
+                      hover:bg-orange-500
+
+                      text-white
+
+                      px-4
+                      sm:px-8
+
+                      py-2.5
+                      sm:py-4
+
+                      rounded-xl
+
+                      text-xs
+                      sm:text-base
+                      lg:text-lg
+
+                      font-semibold
+
+                      transition-all
+                      duration-300
+
+                      shadow-xl
+
+                      hover:scale-105
+                    "
+                  >
+
+                    {slide.button1.text}
+
+                    <ChevronRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+
+                  </Link>
+
+                  {/* BUTTON 2 */}
+                  <Link
+                    to={slide.button2.link}
+                    className="
+                      inline-flex
+                      items-center
+                      justify-center
+
+                      bg-white/10
+                      backdrop-blur-md
+
+                      hover:bg-white/20
+
+                      text-white
+
+                      px-4
+                      sm:px-8
+
+                      py-2.5
+                      sm:py-4
+
+                      rounded-xl
+
+                      text-xs
+                      sm:text-base
+                      lg:text-lg
+
+                      font-semibold
+
+                      border
+                      border-white/20
+
+                      transition-all
+                      duration-300
+                    "
+                  >
+
+                    {slide.button2.text}
+
+                  </Link>
+
+                </div>
+
+              </div>
 
             </div>
 
@@ -197,19 +306,42 @@ export default function Slider() {
 
       ))}
 
-      {/* Dots */}
-      <div className="absolute bottom-4 sm:bottom-6 left-0 right-0 flex justify-center space-x-3 z-40">
+      {/* DOTS */}
+      <div
+        className="
+          absolute
+
+          bottom-5
+          sm:bottom-7
+
+          left-0
+          right-0
+
+          flex
+          justify-center
+
+          gap-3
+
+          z-40
+        "
+      >
 
         {slides.map((_, index) => (
 
           <button
             key={index}
             onClick={() => setCurrent(index)}
-            className={`w-3 h-3 rounded-full transition-all ${
-              current === index
-                ? "bg-orange-500 w-6"
-                : "bg-gray-400"
-            }`}
+            className={`
+              rounded-full
+              transition-all
+              duration-300
+
+              ${
+                current === index
+                  ? "bg-orange-500 w-8 h-3"
+                  : "bg-white/50 w-3 h-3"
+              }
+            `}
           ></button>
 
         ))}
