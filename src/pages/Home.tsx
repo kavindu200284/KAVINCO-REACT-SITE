@@ -56,58 +56,58 @@ export default function Home() {
 
     {
       url: "https://www.youtube.com/embed/M6nwTW07PqA",
-      title: "Industrial Machine Repair",
+      title: "Industrial Machinery installation",
       description:
-        "Watch our expert team restoring industrial machinery with precision engineering solutions.",
+        "Watch our Safe Trasportation and Machinery installation for factories and Industries.",
     },
 
     {
       url: "https://www.youtube.com/embed/eFhwDvz1VRk",
-      title: "Custom Machine Fabrication",
+      title: "Industrial Machinery Repair",
       description:
-        "See how we manufacture custom machinery tailored for industrial production needs.",
+        "From breakdown to breakthrough—watch us repair and restore industrial machinery to peak performance.",
     },
 
     {
       url: "https://www.youtube.com/embed/2xO1Q94r-CA",
-      title: "Heavy Equipment Modification",
+      title: "Custom Machinery Manufacturing",
       description:
-        "Advanced machine modification projects designed to improve productivity and efficiency.",
+        "From concept to creation—watch us design and build custom machinery that powers industry success.",
     },
 
     {
       url: "https://www.youtube.com/embed/8boBCozzrcE",
-      title: "Industrial Automation Work",
+      title: "Custom Size Mixing Tank Fabrication",
       description:
-        "Automation and control system integration for modern manufacturing industries.",
+        "Custom fabricated mixing tanks and industrial vessels for chemical, food, and manufacturing processes.",
     },
 
     {
       url: "https://www.youtube.com/embed/sLtrQAMQHzA",
-      title: "Precision Welding Projects",
+      title: "Custom Machinery Manufacturing",
       description:
-        "High-quality TIG and industrial welding projects completed by our engineering team.",
+        "Customized your machinery for own Industry and Business needs. ",
     },
 
     {
       url: "https://www.youtube.com/embed/5KHrMA0EzeM",
-      title: "Machinery Installation",
+      title: "Safety System Installation for Machinery",
       description:
-        "Professional machinery relocation, setup, and installation services for factories.",
-    },
+        "Industrial machinery safety system installation and integration for secure and compliant operations.",
+   },
 
     {
       url: "https://www.youtube.com/embed/ypB5tAqBWaI",
-      title: "Spare Parts Engineering",
+      title: "Linior Cutter Fabrication",
       description:
-        "Custom fabricated spare parts and mechanical engineering solutions for industries.",
+        "Custom fabricated linior cutters for precise and efficient industrial cutting operations.",
     },
 
     {
       url: "https://www.youtube.com/embed/To10oiPby9s",
-      title: "Factory Machinery Solutions",
+      title: "Safety System Installation for Machinery",
       description:
-        "Explore complete industrial machinery solutions built for modern production lines.",
+        "Industrial machinery safety system installation and integration for secure and compliant operations.",
     },
 
   ];

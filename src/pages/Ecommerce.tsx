@@ -222,6 +222,7 @@ export default function ECommerce() {
                   src={p.image1Url}
                   alt={p.name}
                   loading="lazy"
+                  decoding="async"
                   style={{
                     width: "100%",
                     height: "200px",

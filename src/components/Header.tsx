@@ -40,7 +40,7 @@ export default function Header() {
             </Link>
             
             <Link
-              to="/Ecommerce"
+              to="/Ecommerc"
               className="font-semibold hover:text-gray-100 transition-colors font-medium"
             >
               Nut & Bolts
