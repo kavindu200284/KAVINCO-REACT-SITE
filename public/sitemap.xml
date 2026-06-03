@@ -13,7 +13,32 @@
   </url>
 
   <url>
-    <loc>https://www.kavinco.lk/blog</loc>
+    <loc>https://www.kavinco.lk/gallery/repair</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.kavinco.lk/gallery/manufacturing</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.kavinco.lk/gallery/modification</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.kavinco.lk/gallery/spareparts</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.kavinco.lk/gallery/transport</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.kavinco.lk/gallery/import</loc>
     <priority>0.8</priority>
   </url>
 
