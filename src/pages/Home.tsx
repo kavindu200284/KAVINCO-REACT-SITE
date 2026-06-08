@@ -120,6 +120,193 @@ export default function Home() {
 
       <Slider />
 
+
+{/* PREMIUM MAINTENANCE BOOKING SECTION */}
+<section className="py-16 sm:py-24 bg-white overflow-hidden">
+
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div
+      className="
+        group
+        relative
+        block
+        overflow-hidden
+        rounded-[28px]
+        sm:rounded-[36px]
+        shadow-xl
+        hover:shadow-2xl
+        transition-all
+        duration-500
+      "
+    >
+
+      {/* Background Image */}
+      <div className="relative h-[520px] sm:h-[600px] lg:h-[650px] overflow-hidden">
+
+        <img
+          src="/maintenance-banner.webp"
+          alt="Industrial Machinery Maintenance"
+          className="
+            w-full
+            h-full
+            object-cover
+            group-hover:scale-105
+            transition-transform
+            duration-700
+          "
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/55 to-black/20"></div>
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent sm:hidden"></div>
+
+      </div>
+
+      {/* Content */}
+      <div className="absolute inset-0 flex items-end sm:items-center">
+
+        <div
+          className="
+            w-full
+            px-5
+            pb-8
+            sm:px-12
+            sm:pb-0
+            lg:px-16
+            max-w-3xl
+          "
+        >
+
+          {/* Tag */}
+          <div
+            className="
+              inline-flex
+              items-center
+              bg-orange-600/95
+              backdrop-blur-md
+              text-white
+              px-4
+              py-2
+              rounded-full
+              text-xs sm:text-sm
+              font-semibold
+              mb-4 sm:mb-6
+              shadow-lg
+            "
+          >
+            Industrial Machinery Maintenance
+          </div>
+
+          {/* Title */}
+          <h2
+            className="
+              text-3xl
+              sm:text-5xl
+              lg:text-6xl
+              font-bold
+              text-white
+              leading-tight
+              mb-4 sm:mb-6
+              drop-shadow-xl
+            "
+          >
+            Book Your
+            <br />
+            Maintenance Service
+          </h2>
+
+          {/* Description */}
+          <p
+            className="
+              text-sm
+              sm:text-lg
+              lg:text-xl
+              text-gray-200
+              leading-relaxed
+              mb-6 sm:mb-8
+              max-w-2xl
+            "
+          >
+            Schedule preventive maintenance, emergency repairs,
+            inspections and machinery servicing to keep your
+            production running without costly downtime.
+          </p>
+
+          {/* Buttons */}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-5">
+
+            {/* Book Button */}
+            <button
+              className="
+                inline-flex
+                items-center
+                justify-center
+                bg-orange-600
+                hover:bg-orange-500
+                text-white
+                px-6
+                sm:px-8
+                py-3
+                sm:py-4
+                rounded-2xl
+                text-sm
+                sm:text-lg
+                font-semibold
+                shadow-2xl
+                transition-all
+                duration-300
+                w-full sm:w-auto
+              "
+            >
+              Book Service →
+            </button>
+
+            {/* WhatsApp Button */}
+            <a
+              href="https://wa.me/94770414713"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                inline-flex
+                items-center
+                justify-center
+                bg-white/15
+                backdrop-blur-md
+                border border-white/20
+                hover:bg-white/25
+                text-white
+                px-6
+                sm:px-8
+                py-3
+                sm:py-4
+                rounded-2xl
+                text-sm
+                sm:text-lg
+                font-semibold
+                transition-all
+                duration-300
+                shadow-xl
+                w-full sm:w-auto
+              "
+            >
+              Emergency Repair
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
       {/* PREMIUM BRANDNEW MACHINERY SECTION */}
       <section className="py-16 sm:py-24 bg-white overflow-hidden">
 
