@@ -43,7 +43,7 @@ export default function Header() {
               to="/Ecommerc"
               className="font-semibold hover:text-gray-100 transition-colors font-medium"
             >
-              Nut & Bolts
+             Repair
             </Link>
             <Link
               to="/blog"
