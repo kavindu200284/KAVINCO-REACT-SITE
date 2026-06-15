@@ -1,3 +1,4 @@
+
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -11,9 +12,13 @@ import { auth } from "./services/auth";
 import ProductDetails from "./pages/ProductDetails";
 import Gallery from "./pages/Gallery";
 
+import Maintenance from "./pages/Maintenance";
+import EmergencyMaintenance from "./pages/EmergencyMaintenance";
+import ScheduledMaintenance from "./pages/ScheduledMaintenance";
+import PreventiveMaintenance from "./pages/PreventiveMaintenance";
+
 function App() {
 
-  // Wake up Render backend when frontend loads
   useEffect(() => {
     fetch("https://your-backend.onrender.com/health")
       .catch(err => console.log("Backend wake error:", err));
@@ -23,8 +28,10 @@ function App() {
     <Router>
       <Routes>
 
+        {/* Home */}
         <Route path="/" element={<Home />} />
 
+        {/* Auth */}
         <Route
           path="/login"
           element={
@@ -43,6 +50,7 @@ function App() {
           }
         />
 
+        {/* Dashboard */}
         <Route
           path="/dashboard"
           element={
@@ -52,15 +60,40 @@ function App() {
           }
         />
 
+        {/* Ecommerce */}
         <Route path="/brandnew" element={<ECommerce />} />
         <Route path="/ecommerce" element={<ECommerce />} />
         <Route path="/product/:id" element={<ProductDetails />} />
 
-        {/* Dynamic Gallery Route */}
-        <Route path="/gallery/:serviceSlug" element={<Gallery />} />
+        {/* Maintenance */}
+        <Route path="/maintenance" element={<Maintenance />} />
 
-        {/* Catch-all */}
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route
+          path="/maintenance/emergency"
+          element={<EmergencyMaintenance />}
+        />
+
+        <Route
+          path="/maintenance/scheduled"
+          element={<ScheduledMaintenance />}
+        />
+
+        <Route
+          path="/maintenance/preventive"
+          element={<PreventiveMaintenance />}
+        />
+
+        {/* Gallery */}
+        <Route
+          path="/gallery/:serviceSlug"
+          element={<Gallery />}
+        />
+
+        {/* Catch All */}
+        <Route
+          path="*"
+          element={<Navigate to="/" replace />}
+        />
 
       </Routes>
     </Router>
@@ -68,3 +101,4 @@ function App() {
 }
 
 export default App;
+

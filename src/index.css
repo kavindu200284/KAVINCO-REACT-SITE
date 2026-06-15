@@ -16,3 +16,31 @@
     overflow: hidden;
   }
 }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.machinery-track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: machineryScroll 25s linear infinite;
+}
+
+.machinery-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes machineryScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}

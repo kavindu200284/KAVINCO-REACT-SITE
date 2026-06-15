@@ -120,7 +120,6 @@ export default function Home() {
 
       <Slider />
 
-
 {/* PREMIUM MAINTENANCE BOOKING SECTION */}
 <section className="py-16 sm:py-24 bg-white overflow-hidden">
 
@@ -195,7 +194,7 @@ export default function Home() {
               shadow-lg
             "
           >
-            Industrial Machinery Maintenance
+            Kavinco Maintenance Services
           </div>
 
           {/* Title */}
@@ -211,9 +210,9 @@ export default function Home() {
               drop-shadow-xl
             "
           >
-            Book Your
+            Keep Your
             <br />
-            Maintenance Service
+            Production Running
           </h2>
 
           {/* Description */}
@@ -228,16 +227,15 @@ export default function Home() {
               max-w-2xl
             "
           >
-            Schedule preventive maintenance, emergency repairs,
-            inspections and machinery servicing to keep your
-            production running without costly downtime.
+            Choose emergency breakdown support, scheduled maintenance,
+            or preventive maintenance plans for your industrial machinery.
           </p>
 
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-5">
 
-            {/* Book Button */}
-            <button
+            <Link
+              to="/maintenance"
               className="
                 inline-flex
                 items-center
@@ -259,40 +257,10 @@ export default function Home() {
                 w-full sm:w-auto
               "
             >
+              View Maintenance Services{/*
               Book Service →
-            </button>
-
-            {/* WhatsApp Button */}
-            <a
-              href="https://wa.me/94770414713"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="
-                inline-flex
-                items-center
-                justify-center
-                bg-white/15
-                backdrop-blur-md
-                border border-white/20
-                hover:bg-white/25
-                text-white
-                px-6
-                sm:px-8
-                py-3
-                sm:py-4
-                rounded-2xl
-                text-sm
-                sm:text-lg
-                font-semibold
-                transition-all
-                duration-300
-                shadow-xl
-                w-full sm:w-auto
-              "
-            >
-              Emergency Repair
-            </a>
-
+              */}
+            </Link>
           </div>
 
         </div>
@@ -305,202 +273,115 @@ export default function Home() {
 
 </section>
 
+{/* MACHINERY SHOWCASE */}
+
+<section className="py-14 bg-white">
+
+  <div className="max-w-7xl mx-auto px-4">
 
 
-      {/* PREMIUM BRANDNEW MACHINERY SECTION */}
-      <section className="py-16 sm:py-24 bg-white overflow-hidden">
+<div className="text-center mb-8">
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <span className="inline-block bg-orange-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
+    Premium Machinery Collection
+  </span>
 
-          <Link
-            to="/brandnew"
+  <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-4">
+    Modern Machinery For Smart Industries
+  </h2>
+
+  <p className="text-gray-600 max-w-2xl mx-auto">
+    Explore industrial machinery, automation systems and custom manufacturing solutions.
+  </p>
+
+</div>
+
+<div className="overflow-hidden py-4">
+
+  <div className="machinery-track">
+
+    {[
+      "/machine-1.webp",
+      "/machine-2.webp",
+      "/machine-3.webp",
+      "/machine-4.webp",
+
+      // Duplicate for infinite loop
+      "/machine-1.webp",
+      "/machine-2.webp",
+      "/machine-3.webp",
+      "/machine-4.webp",
+    ].map((image, index) => (
+
+      <Link
+        key={index}
+        to="/brandnew"
+        className="
+          shrink-0
+          w-[240px]
+          sm:w-[280px]
+          group
+        "
+      >
+        <div
+          className="
+            overflow-hidden
+            rounded-2xl
+            shadow-lg
+            bg-white
+          "
+        >
+          <img
+            src={image}
+            alt={`Machine ${index + 1}`}
             className="
-              group
-              relative
-              block
-              overflow-hidden
-              rounded-[28px]
-              sm:rounded-[36px]
-              shadow-xl
-              hover:shadow-2xl
+              w-full
+              h-[270px]
+              object-cover
+              group-hover:scale-105
               transition-all
               duration-500
             "
-          >
-
-            {/* Background Image */}
-            <div className="relative h-[520px] sm:h-[600px] lg:h-[650px] overflow-hidden">
-
-              <img
-                src="/Machinery-01.webp"
-                alt="Brand New Machinery"
-                className="
-                  w-full
-                  h-full
-                  object-cover
-                  group-hover:scale-105
-                  transition-transform
-                  duration-700
-                "
-              />
-
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/55 to-black/20"></div>
-
-              {/* Mobile Bottom Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent sm:hidden"></div>
-
-            </div>
-
-            {/* Content */}
-            <div
-              className="
-                absolute
-                inset-0
-                flex
-                items-end sm:items-center
-              "
-            >
-
-              <div
-                className="
-                  w-full
-                  px-5
-                  pb-8
-                  sm:px-12
-                  sm:pb-0
-                  lg:px-16
-                  max-w-3xl
-                "
-              >
-
-                {/* Tag */}
-                <div
-                  className="
-                    inline-flex
-                    items-center
-                    bg-orange-600/95
-                    backdrop-blur-md
-                    text-white
-                    px-4
-                    py-2
-                    rounded-full
-                    text-xs sm:text-sm
-                    font-semibold
-                    mb-4 sm:mb-6
-                    shadow-lg
-                  "
-                >
-                  Brand New Industrial Machinery
-                </div>
-
-                {/* Title */}
-                <h2
-                  className="
-                    text-3xl
-                    sm:text-5xl
-                    lg:text-6xl
-                    font-bold
-                    text-white
-                    leading-tight
-                    mb-4 sm:mb-6
-                    drop-shadow-xl
-                  "
-                >
-                  Modern Machinery
-                  <br />
-                  For Smart Industries
-                </h2>
-
-                {/* Description */}
-                <p
-                  className="
-                    text-sm
-                    sm:text-lg
-                    lg:text-xl
-                    text-gray-200
-                    leading-relaxed
-                    mb-6 sm:mb-8
-                    max-w-2xl
-                  "
-                >
-                  Discover high-performance industrial machinery engineered
-                  for production, automation, and manufacturing excellence.
-                </p>
-
-                {/* Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-5">
-
-                  {/* Explore Button */}
-                  <div
-                    className="
-                      inline-flex
-                      items-center
-                      justify-center
-                      bg-orange-600
-                      group-hover:bg-orange-500
-                      text-white
-                      px-6
-                      sm:px-8
-                      py-3
-                      sm:py-4
-                      rounded-2xl
-                      text-sm
-                      sm:text-lg
-                      font-semibold
-                      shadow-2xl
-                      transition-all
-                      duration-300
-                      backdrop-blur-md
-                      w-full sm:w-auto
-                    "
-                  >
-                    Shop →
-                  </div>
-
-                  {/* WhatsApp Button */}
-                  <a
-                    href="https://wa.me/94770414713"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="
-                      inline-flex
-                      items-center
-                      justify-center
-                      bg-white/15
-                      backdrop-blur-md
-                      border border-white/20
-                      hover:bg-white/25
-                      text-white
-                      px-6
-                      sm:px-8
-                      py-3
-                      sm:py-4
-                      rounded-2xl
-                      text-sm
-                      sm:text-lg
-                      font-semibold
-                      transition-all
-                      duration-300
-                      shadow-xl
-                      w-full sm:w-auto
-                    "
-                  >
-                    Contact Us
-                  </a>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </Link>
-
+          />
         </div>
+      </Link>
 
-      </section>
+    ))}
+
+  </div>
+
+</div>
+
+<div className="text-center mt-8">
+
+  <Link
+    to="/brandnew"
+    className="
+      inline-flex
+      items-center
+      justify-center
+      bg-orange-600
+      hover:bg-orange-500
+      text-white
+      px-8
+      py-3
+      rounded-xl
+      font-semibold
+      transition-all
+    "
+  >
+    View All Machinery →
+  </Link>
+
+</div>
+
+
+  </div>
+
+</section>
+
+
+
 
       {/* SERVICES SECTION */}
       <section className="py-20 bg-white">
