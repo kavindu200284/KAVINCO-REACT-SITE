@@ -102,7 +102,7 @@ export default function ScheduledMaintenance() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="max-w-3xl">
               <div className="inline-flex bg-orange-600/95 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-semibold mb-6 shadow-lg">
-                Scheduled Maintenance Service
+                Maintenance Appointment Service
               </div>
 
               <h1 className="text-5xl lg:text-7xl font-bold text-white mb-6">
@@ -112,7 +112,7 @@ export default function ScheduledMaintenance() {
               </h1>
 
               <p className="text-xl text-gray-200 mb-8">
-                Schedule maintenance work in advance and benefit from lower
+                Maintenance Appointment Service work in advance and benefit from lower
                 rates compared to emergency breakdown services.
               </p>
 
@@ -143,13 +143,11 @@ export default function ScheduledMaintenance() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-4xl mx-auto">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Planned Maintenance Support
+              Maintenance Support
             </h2>
 
             <p className="text-xl text-gray-600">
-              If your machine requires repairs, modifications, inspections, or
-              maintenance that can be planned in advance, Scheduled Maintenance
-              is the most cost-effective option.
+              Book a maintenance appointment at a convenient date and time. Our technicians can perform inspections, repairs, servicing, modifications, and equipment maintenance to keep your operations running smoothly.
             </p>
           </div>
         </div>

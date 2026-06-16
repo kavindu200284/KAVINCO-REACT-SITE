@@ -23,7 +23,7 @@ export default function Maintenance() {
       buttonText: "Emergency Support",
     },
     {
-      title: "Scheduled Maintenance Service",
+      title: "Maintenance Appointment Service",
       icon: CalendarCheck,
       description:
         "Book maintenance work in advance for repairs, inspections, modifications, and machinery servicing at planned service rates.",

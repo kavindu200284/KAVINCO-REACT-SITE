@@ -40,7 +40,7 @@ export default function Header() {
             </Link>
             
             <Link
-              to="/Ecommerc"
+              to="/maintenance"
               className="font-semibold hover:text-gray-100 transition-colors font-medium"
             >
              Repair

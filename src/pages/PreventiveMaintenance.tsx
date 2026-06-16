@@ -16,20 +16,20 @@ import {
 export default function PreventiveMaintenance() {
   const plans = [
     {
-      name: "Basic Plan",
+      name: "Single Visit Plan",
       visits: "1 Visit Per Month",
       oneMonthPrice: "Rs. 16,500",
       threeMonthPrice: "Rs. 15,000",
     },
     {
-      name: "Standard Plan",
+      name: "Double Visit Plan",
       visits: "2 Visits Per Month",
       oneMonthPrice: "Rs. 31,900",
       threeMonthPrice: "Rs. 29,000",
       featured: true,
     },
     {
-      name: "Priority Plan",
+      name: "Triple Visit Plan",
       visits: "3 Visits Per Month",
       oneMonthPrice: "Rs. 47,300",
       threeMonthPrice: "Rs. 43,000",
