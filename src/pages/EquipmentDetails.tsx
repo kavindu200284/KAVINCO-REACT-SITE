@@ -5,6 +5,29 @@ import Footer from "../components/Footer";
 import { getEquipment } from "../services/equipmentService";
 import { Equipment as EquipmentItem } from "../types/Equipment";
 
+function getAvailableImages(item: EquipmentItem) {
+  return [item.image1Url, item.image2Url, item.image3Url].filter((url): url is string => Boolean(url && url.trim()));
+}
+
+function getVideoEmbedUrl(url?: string) {
+  if (!url) return null;
+
+  const trimmed = url.trim();
+  if (!trimmed) return null;
+
+  const youtubeMatch = trimmed.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+  if (youtubeMatch?.[1]) {
+    return `https://www.youtube.com/embed/${youtubeMatch[1]}`;
+  }
+
+  const vimeoMatch = trimmed.match(/vimeo\.com\/(\d+)/);
+  if (vimeoMatch?.[1]) {
+    return `https://player.vimeo.com/video/${vimeoMatch[1]}`;
+  }
+
+  return trimmed;
+}
+
 export default function EquipmentDetails() {
   const { id } = useParams();
   const [item, setItem] = useState<EquipmentItem | null>(null);
@@ -16,7 +39,13 @@ export default function EquipmentDetails() {
         const data = await getEquipment();
         const found = data.find((entry) => entry._id === id);
         setItem(found || null);
-        if (found) setMainImage(found.image1Url ?? null);
+
+        if (found) {
+          const availableImages = getAvailableImages(found);
+          setMainImage(availableImages[0] ?? null);
+        } else {
+          setMainImage(null);
+        }
       } catch (err) {
         console.error(err);
       }
@@ -36,6 +65,9 @@ export default function EquipmentDetails() {
     );
   }
 
+  const availableImages = getAvailableImages(item);
+  const videoEmbedUrl = getVideoEmbedUrl(item.videoLink);
+
   return (
     <div style={{ background: "#fff", minHeight: "100vh" }}>
       <Header />
@@ -46,15 +78,36 @@ export default function EquipmentDetails() {
       <div style={{ maxWidth: "1300px", margin: "30px auto 80px", padding: "0 20px", display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: "40px", alignItems: "start" }}>
         <div>
           <div style={{ width: "100%", height: "600px", borderRadius: "24px", background: "#fff", display: "flex", justifyContent: "center", alignItems: "center", overflow: "hidden", border: "1px solid #f1f1f1" }}>
-            {mainImage && <img src={mainImage} alt={item.name} style={{ width: "100%", height: "100%", objectFit: "contain" }} />}
+            {mainImage ? (
+              <img src={mainImage} alt={item.name} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+            ) : (
+              <div style={{ color: "#999", fontSize: "16px", textAlign: "center", padding: "20px" }}>No images uploaded yet.</div>
+            )}
           </div>
-          <div style={{ display: "flex", gap: "12px", marginTop: "16px", flexWrap: "wrap" }}>
-            {[item.image1Url, item.image2Url, item.image3Url].filter(Boolean).map((img, idx) => (
-              <div key={idx} onClick={() => setMainImage(img ?? null)} style={{ width: "90px", height: "90px", borderRadius: "14px", border: mainImage === img ? "2px solid #ff6600" : "1px solid #eee", cursor: "pointer", overflow: "hidden", padding: "8px", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                <img src={img} alt="Thumbnail" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+          {availableImages.length > 0 && (
+            <div style={{ display: "flex", gap: "12px", marginTop: "16px", flexWrap: "wrap" }}>
+              {availableImages.map((img, idx) => (
+                <div key={idx} onClick={() => setMainImage(img)} style={{ width: "90px", height: "90px", borderRadius: "14px", border: mainImage === img ? "2px solid #ff6600" : "1px solid #eee", cursor: "pointer", overflow: "hidden", padding: "8px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                  <img src={img} alt="Thumbnail" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+                </div>
+              ))}
+            </div>
+          )}
+
+          {videoEmbedUrl && (
+            <div style={{ marginTop: "24px" }}>
+              <h3 style={{ fontSize: "18px", fontWeight: 700, color: "#111", marginBottom: "12px" }}>Product Video</h3>
+              <div style={{ position: "relative", paddingBottom: "56.25%", height: 0, overflow: "hidden", borderRadius: "16px", background: "#000" }}>
+                <iframe
+                  src={videoEmbedUrl}
+                  title={`${item.title || item.name} video`}
+                  style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: 0 }}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
               </div>
-            ))}
-          </div>
+            </div>
+          )}
         </div>
         <div>
           <h1 style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: 700, color: "#111", marginBottom: "18px" }}>{item.title || item.name}</h1>
