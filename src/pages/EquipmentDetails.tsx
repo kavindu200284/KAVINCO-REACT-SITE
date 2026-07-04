@@ -72,7 +72,7 @@ export default function EquipmentDetails() {
                   <div>
                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "4px" }}>
                       <span style={{ color: "#999", fontSize: "12px", fontWeight: 700 }}>ORIGINAL PRICE</span>
-                      <span style={{ color: "#999", fontSize: "12px", fontWeight: 600, textDecoration: "line-through" }}>USD {(item.price || 0).toFixed(2)}</span>
+                      <span style={{ color: "#999", fontSize: "12px", fontWeight: 600, textDecoration: "line-through" }}>Rs {(item.price || 0).toFixed(2)}</span>
                     </div>
                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "4px" }}>
                       <span style={{ color: "#999", fontSize: "12px", fontWeight: 700 }}>DISCOUNT</span>
@@ -80,13 +80,13 @@ export default function EquipmentDetails() {
                     </div>
                     <div style={{ display: "flex", justifyContent: "space-between" }}>
                       <span style={{ color: "#111", fontSize: "13px", fontWeight: 700 }}>FINAL PRICE</span>
-                      <span style={{ color: "#ff6600", fontSize: "14px", fontWeight: 700 }}>USD {((item.price || 0) * (1 - (item.discount || 0) / 100)).toFixed(2)}</span>
+                      <span style={{ color: "#ff6600", fontSize: "14px", fontWeight: 700 }}>Rs {((item.price || 0) * (1 - (item.discount || 0) / 100)).toFixed(2)}</span>
                     </div>
                   </div>
                 ) : (
                   <div style={{ display: "flex", justifyContent: "space-between" }}>
                     <span style={{ color: "#999", fontSize: "12px", fontWeight: 700 }}>PRICE</span>
-                    <span style={{ color: "#111", fontWeight: 600 }}>USD {(item.price || 0).toFixed(2)}</span>
+                    <span style={{ color: "#111", fontWeight: 600 }}>Rs {(item.price || 0).toFixed(2)}</span>
                   </div>
                 )}
               </div>

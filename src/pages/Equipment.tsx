@@ -98,11 +98,11 @@ export default function Equipment() {
                   <div style={{ minHeight: "60px", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
                     {discountPercent > 0 ? (
                       <>
-                        <div style={{ fontSize: "13px", color: "#999", textDecoration: "line-through", marginBottom: "4px" }}>USD {originalPrice.toFixed(2)}</div>
-                        <div style={{ fontSize: "18px", fontWeight: 700, color: "#ff6600" }}>USD {discountedPrice.toFixed(2)}</div>
+                        <div style={{ fontSize: "13px", color: "#999", textDecoration: "line-through", marginBottom: "4px" }}>Rs {originalPrice.toFixed(2)}</div>
+                        <div style={{ fontSize: "18px", fontWeight: 700, color: "#ff6600" }}>Rs {discountedPrice.toFixed(2)}</div>
                       </>
                     ) : (
-                      <div style={{ fontSize: "18px", fontWeight: 700, color: "#ff6600" }}>USD {originalPrice.toFixed(2)}</div>
+                      <div style={{ fontSize: "18px", fontWeight: 700, color: "#ff6600" }}>Rs {originalPrice.toFixed(2)}</div>
                     )}
                     <span style={{ fontSize: "12px", color: "#999" }}>{item.itemCode || "N/A"}</span>
                   </div>
