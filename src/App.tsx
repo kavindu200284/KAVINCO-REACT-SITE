@@ -7,6 +7,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import ECommerce from "./pages/Ecommerce";
+import Equipment from "./pages/Equipment";
+import EquipmentDetails from "./pages/EquipmentDetails";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { auth } from "./services/auth";
 import ProductDetails from "./pages/ProductDetails";
@@ -64,6 +66,10 @@ function App() {
         <Route path="/brandnew" element={<ECommerce />} />
         <Route path="/ecommerce" element={<ECommerce />} />
         <Route path="/product/:id" element={<ProductDetails />} />
+
+        {/* Equipment */}
+        <Route path="/equipment" element={<Equipment />} />
+        <Route path="/equipment/:id" element={<EquipmentDetails />} />
 
         {/* Maintenance */}
         <Route path="/maintenance" element={<Maintenance />} />

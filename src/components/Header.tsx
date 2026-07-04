@@ -33,6 +33,12 @@ export default function Header() {
               Brand New
             </Link>
             <Link
+              to="/equipment"
+              className="font-semibold hover:text-gray-100 transition-colors font-medium"
+            >
+              Equipment
+            </Link>
+            <Link
               to="/used"
               className="font-semibold hover:text-gray-100 transition-colors font-medium"
             >
@@ -94,6 +100,7 @@ export default function Header() {
             {[
               { path: "/", label: "Home" },
               { path: "/brandnew", label: "Brand New" },
+              { path: "/equipment", label: "Equipment" },
               { path: "/used", label: "Used" },
               { path: "/shop", label: "Nut & Bolts" },
               { path: "/blog", label: "Blog" },

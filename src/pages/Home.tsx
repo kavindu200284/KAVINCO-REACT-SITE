@@ -380,6 +380,113 @@ export default function Home() {
 
 </section>
 
+{/* EQUIPMENT SHOWCASE */}
+
+<section className="py-14 bg-gray-50">
+
+  <div className="max-w-7xl mx-auto px-4">
+
+
+<div className="text-center mb-8">
+
+  <span className="inline-block bg-orange-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
+    Industrial Equipment
+  </span>
+
+  <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-4">
+    Premium Equipment For Your Operations
+  </h2>
+
+  <p className="text-gray-600 max-w-2xl mx-auto">
+    Discover high-quality equipment and tools for workshops, factories, and field operations.
+  </p>
+
+</div>
+
+<div className="overflow-hidden py-4">
+
+  <div className="machinery-track">
+
+    {[
+      "/machine-1.webp",
+      "/machine-2.webp",
+      "/machine-3.webp",
+      "/machine-4.webp",
+
+      // Duplicate for infinite loop
+      "/machine-1.webp",
+      "/machine-2.webp",
+      "/machine-3.webp",
+      "/machine-4.webp",
+    ].map((image, index) => (
+
+      <Link
+        key={index}
+        to="/equipment"
+        className="
+          shrink-0
+          w-[240px]
+          sm:w-[280px]
+          group
+        "
+      >
+        <div
+          className="
+            overflow-hidden
+            rounded-2xl
+            shadow-lg
+            bg-white
+          "
+        >
+          <img
+            src={image}
+            alt={`Equipment ${index + 1}`}
+            className="
+              w-full
+              h-[270px]
+              object-cover
+              group-hover:scale-105
+              transition-all
+              duration-500
+            "
+          />
+        </div>
+      </Link>
+
+    ))}
+
+  </div>
+
+</div>
+
+<div className="text-center mt-8">
+
+  <Link
+    to="/equipment"
+    className="
+      inline-flex
+      items-center
+      justify-center
+      bg-orange-600
+      hover:bg-orange-500
+      text-white
+      px-8
+      py-3
+      rounded-xl
+      font-semibold
+      transition-all
+    "
+  >
+    View All Equipment →
+  </Link>
+
+</div>
+
+
+  </div>
+
+</section>
+
 
 
 
