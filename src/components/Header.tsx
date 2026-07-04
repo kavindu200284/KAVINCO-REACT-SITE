@@ -38,18 +38,12 @@ export default function Header() {
             >
               Equipment
             </Link>
-            <Link
-              to="/used"
-              className="font-semibold hover:text-gray-100 transition-colors font-medium"
-            >
-              Used
-            </Link>
-            
+                        
             <Link
               to="/maintenance"
               className="font-semibold hover:text-gray-100 transition-colors font-medium"
             >
-             Repair
+             Maintenance
             </Link>
             <Link
               to="/blog"
