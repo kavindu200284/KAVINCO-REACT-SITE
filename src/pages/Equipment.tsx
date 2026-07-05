@@ -5,13 +5,62 @@ import Footer from "../components/Footer";
 import { getEquipment } from "../services/equipmentService";
 import { Equipment as EquipmentItem } from "../types/Equipment";
 
+function getDescriptionPreview(text?: string) {
+  const baseText = (text || "High-quality equipment available for immediate inquiry.").trim();
+  const normalizedText = baseText.replace(/\s+/g, " ");
+  const maxLength = 100;
+
+  const sentences = normalizedText.split(/(?<=[.!?])\s+/).map((sentence) => sentence.trim()).filter(Boolean);
+  if (sentences.length === 0) {
+    return "";
+  }
+
+  const firstTwo = sentences.slice(0, 2).join(" ");
+  if (firstTwo.length <= maxLength) {
+    return firstTwo + (firstTwo.length < normalizedText.length ? "..." : "");
+  }
+
+  const first = sentences[0];
+  if (first.length <= maxLength) {
+    return first + (first.length < normalizedText.length ? "..." : "");
+  }
+
+  return `${first.slice(0, maxLength).trimEnd()}...`;
+}
+
 export default function Equipment() {
   const [items, setItems] = useState<EquipmentItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
+    let timer: number | null = null;
+    let currentValue = 0;
+    let phase: "count" | "pause" = "count";
+
+    const animate = () => {
+      if (phase === "count") {
+        currentValue = Math.min(100, currentValue + 5);
+        setProgress(currentValue);
+
+        if (currentValue >= 100) {
+          phase = "pause";
+          timer = window.setTimeout(animate, 600);
+        } else {
+          timer = window.setTimeout(animate, 40);
+        }
+      } else {
+        currentValue = 0;
+        setProgress(0);
+        phase = "count";
+        timer = window.setTimeout(animate, 200);
+      }
+    };
+
+    timer = window.setTimeout(animate, 0);
+
     async function load() {
       try {
         const data = await getEquipment();
@@ -25,6 +74,10 @@ export default function Equipment() {
     }
 
     load();
+
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
   }, []);
 
   const filtered = items.filter((item) => {
@@ -40,10 +93,21 @@ export default function Equipment() {
 
   if (loading) {
     return (
-      <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", background: "#f8f8f8" }}>
-        <div style={{ width: "70px", height: "70px", border: "6px solid #eee", borderTop: "6px solid #ff6600", borderRadius: "50%", animation: "spin 1s linear infinite", marginBottom: "20px" }} />
-        <h2 style={{ fontSize: "28px", fontWeight: 700, color: "#111" }}>Loading Equipment</h2>
-        <p style={{ color: "#666", marginTop: "8px" }}>Preparing the equipment catalog...</p>
+      <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", background: "#f8f8f8", padding: "0 20px" }}>
+        <div style={{ width: "90px", height: "90px", borderRadius: "50%", border: "6px solid #eee", borderTop: "6px solid #ff6600", marginBottom: "24px", animation: "spin 1.2s linear infinite" }} />
+        <h2 style={{ fontSize: "28px", fontWeight: 700, color: "#111", marginBottom: "12px" }}>Preparing the server...</h2>
+        <p style={{ color: "#666", marginTop: "8px", textAlign: "center", maxWidth: "460px" }}>
+          Great things take a moment. Thanks for your patience.
+        </p>
+        <div style={{ width: "100%", maxWidth: "520px", marginTop: "30px" }}>
+          <div style={{ height: "12px", background: "#e6e6e6", borderRadius: "8px", overflow: "hidden" }}>
+            <div style={{ width: `${progress}%`, height: "12px", background: "#ff6600", transition: "width 0.2s ease" }} />
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between", marginTop: "10px", color: "#666", fontWeight: 600, fontSize: "14px" }}>
+            <span>Loading {progress}%</span>
+            
+          </div>
+        </div>
         <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
       </div>
     );
@@ -55,9 +119,9 @@ export default function Equipment() {
       <section style={{ paddingTop: "110px", paddingBottom: "40px", background: "linear-gradient(to bottom, #ffffff, #f5f5f5)" }}>
         <div style={{ maxWidth: "1300px", margin: "0 auto", padding: "0 20px" }}>
           <div style={{ textAlign: "center", marginBottom: "30px" }}>
-            <h1 style={{ fontSize: "clamp(32px, 5vw, 48px)", fontWeight: 800, color: "#111", marginBottom: "12px" }}>Industrial Equipment</h1>
+            <h1 style={{ fontSize: "clamp(32px, 5vw, 48px)", fontWeight: 800, color: "#111", marginBottom: "12px" }}>Pharmaceutical & Cosmetic Equipment</h1>
             <p style={{ maxWidth: "760px", margin: "0 auto", color: "#666", fontSize: "18px", lineHeight: 1.7 }}>
-              Browse trusted equipment and tools for workshops, factories, and field operations.
+             Reliable stainless steel solutions built for GMP-focused pharmaceutical and cosmetic production, ensuring hygiene, quality, and operational excellence.
             </p>
           </div>
 
@@ -92,7 +156,9 @@ export default function Equipment() {
                     <div style={{ height: "220px", borderRadius: "14px", background: "#f7f7f7", display: "flex", alignItems: "center", justifyContent: "center", color: "#999", marginBottom: "14px" }}>No image</div>
                   )}
                   <h3 style={{ fontSize: "20px", fontWeight: 700, color: "#111", marginBottom: "8px" }}>{item.title || item.name}</h3>
-                  <p style={{ color: "#666", fontSize: "14px", minHeight: "44px", marginBottom: "12px" }}>{item.description?.slice(0, 90) || "High-quality equipment available for immediate inquiry."}</p>
+                  <div style={{ color: "#666", fontSize: "14px", minHeight: "44px", marginBottom: "12px", whiteSpace: "pre-line" }}>
+                    {getDescriptionPreview(item.description)}
+                  </div>
                   
                   {/* PRICING */}
                   <div style={{ minHeight: "60px", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
@@ -105,6 +171,15 @@ export default function Equipment() {
                       <div style={{ fontSize: "18px", fontWeight: 700, color: "#ff6600" }}>Rs {originalPrice.toFixed(2)}</div>
                     )}
                     <span style={{ fontSize: "12px", color: "#999" }}>{item.itemCode || "N/A"}</span>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigate(`/equipment/${item._id}`);
+                      }}
+                      style={{ marginTop: "12px", padding: "8px 12px", borderRadius: "10px", border: "none", background: "#ff6600", color: "#fff", fontWeight: 700, cursor: "pointer", alignSelf: "flex-start" }}
+                    >
+                      View More
+                    </button>
                   </div>
                 </div>
               );

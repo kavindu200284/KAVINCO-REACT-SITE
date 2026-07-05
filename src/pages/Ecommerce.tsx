@@ -10,6 +10,7 @@ export default function ECommerce() {
 
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
 
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -19,35 +20,50 @@ export default function ECommerce() {
   const PRODUCTS_PER_PAGE = 12;
 
   useEffect(() => {
+    let timer: number | null = null;
+    let currentValue = 0;
+    let phase: "count" | "pause" = "count";
+
+    const animate = () => {
+      if (phase === "count") {
+        currentValue = Math.min(100, currentValue + 5);
+        setProgress(currentValue);
+
+        if (currentValue >= 100) {
+          phase = "pause";
+          timer = window.setTimeout(animate, 600);
+        } else {
+          timer = window.setTimeout(animate, 40);
+        }
+      } else {
+        currentValue = 0;
+        setProgress(0);
+        phase = "count";
+        timer = window.setTimeout(animate, 200);
+      }
+    };
+
+    timer = window.setTimeout(animate, 0);
 
     async function load() {
-
       try {
-
         const data = await getProducts();
-
-        const sorted = data.sort(
-          (a, b) => (a.orderNumber ?? 0) - (b.orderNumber ?? 0)
-        );
-
+        const sorted = data.sort((a, b) => (a.orderNumber ?? 0) - (b.orderNumber ?? 0));
         setProducts(sorted);
-
         setLoading(false);
-
       } catch (err) {
-
         console.log("Backend sleeping... retrying");
-
         setTimeout(() => {
           load();
         }, 5000);
-
       }
-
     }
 
     load();
 
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
   }, []);
 
   // LOADING SCREEN
@@ -57,24 +73,25 @@ export default function ECommerce() {
 
       <div
         style={{
-          height: "100vh",
+          minHeight: "100vh",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
           background: "#f8f8f8",
+          padding: "0 20px",
         }}
       >
 
         <div
           style={{
-            width: "70px",
-            height: "70px",
+            width: "90px",
+            height: "90px",
             border: "6px solid #eee",
             borderTop: "6px solid #ff6600",
             borderRadius: "50%",
-            animation: "spin 1s linear infinite",
-            marginBottom: "25px",
+            animation: "spin 1.2s linear infinite",
+            marginBottom: "24px",
           }}
         />
 
@@ -82,21 +99,34 @@ export default function ECommerce() {
           style={{
             fontSize: "28px",
             color: "#222",
-            marginBottom: "10px",
+            marginBottom: "12px",
             fontWeight: "700",
           }}
         >
-          Loading Machinery
+          Preparing the server...
         </h2>
 
         <p
           style={{
-            color: "#777",
+            color: "#666",
             fontSize: "16px",
+            textAlign: "center",
+            maxWidth: "480px",
+            marginBottom: "24px",
           }}
         >
-          Starting server and preparing products...
+          Great things take a moment. Thanks for your patience.
         </p>
+
+        <div style={{ width: "100%", maxWidth: "520px" }}>
+          <div style={{ height: "12px", background: "#e6e6e6", borderRadius: "8px", overflow: "hidden" }}>
+            <div style={{ width: `${progress}%`, height: "12px", background: "#ff6600", transition: "width 0.2s ease" }} />
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between", marginTop: "10px", color: "#666", fontWeight: 600, fontSize: "14px" }}>
+            <span>Loading {progress}%</span>
+            
+            </div>
+        </div>
 
         <style>
           {`

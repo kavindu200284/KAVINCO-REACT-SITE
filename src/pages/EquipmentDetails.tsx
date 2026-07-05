@@ -111,7 +111,9 @@ export default function EquipmentDetails() {
         </div>
         <div>
           <h1 style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: 700, color: "#111", marginBottom: "18px" }}>{item.title || item.name}</h1>
-          <p style={{ color: "#666", lineHeight: 1.8, marginBottom: "24px" }}>{item.description || "Detailed equipment information will appear here."}</p>
+          <div style={{ color: "#666", lineHeight: 1.8, marginBottom: "24px", whiteSpace: "pre-line" }}>
+            {item.description || "Detailed equipment information will appear here."}
+          </div>
           <div style={{ background: "#f8f8f8", borderRadius: "18px", padding: "18px", marginBottom: "20px" }}>
             <div style={{ display: "flex", justifyContent: "space-between", paddingBottom: "10px", borderBottom: "1px solid #eee", marginBottom: "10px" }}>
               <span style={{ color: "#999", fontSize: "12px", fontWeight: 700 }}>ITEM CODE</span>

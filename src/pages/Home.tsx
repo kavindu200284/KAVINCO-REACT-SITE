@@ -394,11 +394,11 @@ export default function Home() {
   </span>
 
   <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-4">
-    Premium Equipment For Your Operations
+    Pharmaceutical & Cosmetic Production Solutions
   </h2>
 
   <p className="text-gray-600 max-w-2xl mx-auto">
-    Discover high-quality equipment and tools for workshops, factories, and field operations.
+    Browse GMP-focused production equipment built for hygiene, precision, and long-lasting performance.
   </p>
 
 </div>
@@ -408,16 +408,16 @@ export default function Home() {
   <div className="machinery-track">
 
     {[
-      "/machine-1.webp",
-      "/machine-2.webp",
-      "/machine-3.webp",
-      "/machine-4.webp",
+      "/eq (1).webp",
+      "/eq (2).webp",
+      "/eq (3).webp",
+    
 
       // Duplicate for infinite loop
-      "/machine-1.webp",
-      "/machine-2.webp",
-      "/machine-3.webp",
-      "/machine-4.webp",
+      "/eq (1).webp",
+      "/eq (2).webp",
+      "/eq (3).webp",
+      
     ].map((image, index) => (
 
       <Link
