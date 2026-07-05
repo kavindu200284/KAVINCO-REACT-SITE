@@ -11,6 +11,8 @@ export default function ECommerce() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
+  const [timedOut, setTimedOut] = useState(false);
+  const [retryKey, setRetryKey] = useState(0);
 
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -20,51 +22,66 @@ export default function ECommerce() {
   const PRODUCTS_PER_PAGE = 12;
 
   useEffect(() => {
-    let timer: number | null = null;
-    let currentValue = 0;
-    let phase: "count" | "pause" = "count";
+    let rafId: number | null = null;
+    let intervalId: number | null = null;
+    const maxMs = 120000; // 2 minutes
+    const start = performance.now();
+    let finished = false;
+    let cancelled = false;
 
-    const animate = () => {
-      if (phase === "count") {
-        currentValue = Math.min(100, currentValue + 5);
-        setProgress(currentValue);
+    setTimedOut(false);
+    setProgress(0);
 
-        if (currentValue >= 100) {
-          phase = "pause";
-          timer = window.setTimeout(animate, 600);
-        } else {
-          timer = window.setTimeout(animate, 40);
-        }
-      } else {
-        currentValue = 0;
-        setProgress(0);
-        phase = "count";
-        timer = window.setTimeout(animate, 200);
+    const tick = () => {
+      const elapsed = performance.now() - start;
+      const pct = Math.min(100, Math.round((elapsed / maxMs) * 100));
+      setProgress(pct);
+      if (pct < 100 && !cancelled) {
+        rafId = requestAnimationFrame(tick);
       }
     };
 
-    timer = window.setTimeout(animate, 0);
+    rafId = requestAnimationFrame(tick);
 
-    async function load() {
+    const attempt = async () => {
       try {
-        const data = await getProducts();
-        const sorted = data.sort((a, b) => (a.orderNumber ?? 0) - (b.orderNumber ?? 0));
-        setProducts(sorted);
-        setLoading(false);
+        const race = Promise.race([
+          getProducts(),
+          new Promise((_, rej) => setTimeout(() => rej(new Error("request-timeout")), 15000)),
+        ]);
+        const data = await race;
+        const sorted = (data as Product[]).sort((a, b) => (a.orderNumber ?? 0) - (b.orderNumber ?? 0));
+        if (!cancelled) {
+          finished = true;
+          setProducts(sorted);
+          setProgress(100);
+          setLoading(false);
+        }
       } catch (err) {
-        console.log("Backend sleeping... retrying");
-        setTimeout(() => {
-          load();
-        }, 5000);
+        // will retry until maxMs
       }
-    }
+    };
 
-    load();
+    attempt();
+
+    intervalId = window.setInterval(() => {
+      const elapsed = performance.now() - start;
+      if (finished || cancelled) return;
+      if (elapsed >= maxMs) {
+        setTimedOut(true);
+        if (rafId) cancelAnimationFrame(rafId);
+        if (intervalId) clearInterval(intervalId);
+        return;
+      }
+      attempt();
+    }, 5000);
 
     return () => {
-      if (timer) clearTimeout(timer);
+      cancelled = true;
+      if (rafId) cancelAnimationFrame(rafId);
+      if (intervalId) clearInterval(intervalId);
     };
-  }, []);
+  }, [retryKey]);
 
   // LOADING SCREEN
   if (loading) {
@@ -124,8 +141,26 @@ export default function ECommerce() {
           </div>
           <div style={{ display: "flex", justifyContent: "space-between", marginTop: "10px", color: "#666", fontWeight: 600, fontSize: "14px" }}>
             <span>Loading {progress}%</span>
-            
+            <span>Max 2 minutes</span>
             </div>
+          {timedOut && (
+            <div style={{ marginTop: "18px", textAlign: "center" }}>
+              <div style={{ color: "#b00", marginBottom: "8px", fontWeight: 700 }}>Server still unavailable.</div>
+              <div style={{ display: "flex", gap: "8px", justifyContent: "center" }}>
+                <button
+                  onClick={() => {
+                    setTimedOut(false);
+                    setProgress(0);
+                    setLoading(true);
+                    setRetryKey((k) => k + 1);
+                  }}
+                  style={{ padding: "8px 12px", borderRadius: "8px", background: "#ff6600", color: "#fff", border: "none", cursor: "pointer", fontWeight: 700 }}
+                >
+                  Retry Now
+                </button>
+              </div>
+            </div>
+          )}
         </div>
 
         <style>
