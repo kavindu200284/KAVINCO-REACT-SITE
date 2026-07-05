@@ -71,23 +71,23 @@ export default function EquipmentDetails() {
   return (
     <div style={{ background: "#fff", minHeight: "100vh" }}>
       <Header />
-      <div style={{ height: "90px" }} />
-      <div style={{ maxWidth: "1300px", margin: "0 auto", padding: "0 20px" }}>
-        <button onClick={() => window.history.back()} style={{ padding: "10px 18px", border: "1px solid #eee", borderRadius: "12px", background: "#fff", color: "#111", fontWeight: 600, cursor: "pointer" }}>← Back</button>
+      <div style={{ height: "clamp(60px, 12vw, 90px)" }} />
+      <div style={{ maxWidth: "1300px", margin: "0 auto", padding: "0 clamp(12px, 4vw, 20px)" }}>
+        <button onClick={() => window.history.back()} style={{ padding: "8px 14px", border: "1px solid #eee", borderRadius: "12px", background: "#fff", color: "#111", fontWeight: 600, cursor: "pointer", fontSize: "clamp(12px, 3vw, 14px)" }}>← Back</button>
       </div>
-      <div style={{ maxWidth: "1300px", margin: "30px auto 80px", padding: "0 20px", display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: "40px", alignItems: "start" }}>
+      <div style={{ maxWidth: "1300px", margin: "0 auto", padding: "clamp(16px, 4vw, 30px) clamp(12px, 4vw, 20px) clamp(40px, 10vw, 80px)", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "clamp(16px, 5vw, 40px)", alignItems: "start" }}>
         <div>
-          <div style={{ width: "100%", height: "600px", borderRadius: "24px", background: "#fff", display: "flex", justifyContent: "center", alignItems: "center", overflow: "hidden", border: "1px solid #f1f1f1" }}>
+          <div style={{ width: "100%", height: "clamp(300px, 60vw, 600px)", borderRadius: "clamp(12px, 3vw, 24px)", background: "#f8f8f8", display: "flex", justifyContent: "center", alignItems: "center", overflow: "hidden", border: "1px solid #f1f1f1", marginBottom: "clamp(12px, 3vw, 18px)" }}>
             {mainImage ? (
-              <img src={mainImage} alt={item.name} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+              <img src={mainImage} alt={item.name} style={{ width: "100%", height: "100%", objectFit: "contain", padding: "clamp(8px, 2vw, 12px)" }} />
             ) : (
-              <div style={{ color: "#999", fontSize: "16px", textAlign: "center", padding: "20px" }}>No images uploaded yet.</div>
+              <div style={{ color: "#999", fontSize: "clamp(14px, 3vw, 16px)", textAlign: "center", padding: "clamp(16px, 4vw, 20px)" }}>No images uploaded yet.</div>
             )}
           </div>
           {availableImages.length > 0 && (
-            <div style={{ display: "flex", gap: "12px", marginTop: "16px", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", gap: "clamp(8px, 2vw, 12px)", marginTop: "clamp(12px, 3vw, 16px)", flexWrap: "wrap" }}>
               {availableImages.map((img, idx) => (
-                <div key={idx} onClick={() => setMainImage(img)} style={{ width: "90px", height: "90px", borderRadius: "14px", border: mainImage === img ? "2px solid #ff6600" : "1px solid #eee", cursor: "pointer", overflow: "hidden", padding: "8px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <div key={idx} onClick={() => setMainImage(img)} style={{ width: "clamp(70px, 18vw, 90px)", height: "clamp(70px, 18vw, 90px)", borderRadius: "clamp(10px, 2vw, 14px)", border: mainImage === img ? "3px solid #ff6600" : "1px solid #eee", cursor: "pointer", overflow: "hidden", padding: "clamp(6px, 1.5vw, 8px)", display: "flex", justifyContent: "center", alignItems: "center", background: "#fff", transition: "all 0.2s" }}>
                   <img src={img} alt="Thumbnail" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
                 </div>
               ))}
@@ -95,9 +95,9 @@ export default function EquipmentDetails() {
           )}
 
           {videoEmbedUrl && (
-            <div style={{ marginTop: "24px" }}>
-              <h3 style={{ fontSize: "18px", fontWeight: 700, color: "#111", marginBottom: "12px" }}>Product Video</h3>
-              <div style={{ position: "relative", paddingBottom: "56.25%", height: 0, overflow: "hidden", borderRadius: "16px", background: "#000" }}>
+            <div style={{ marginTop: "clamp(16px, 4vw, 24px)" }}>
+              <h3 style={{ fontSize: "clamp(16px, 4vw, 18px)", fontWeight: 700, color: "#111", marginBottom: "clamp(10px, 2vw, 12px)" }}>Product Video</h3>
+              <div style={{ position: "relative", paddingBottom: "56.25%", height: 0, overflow: "hidden", borderRadius: "clamp(10px, 2vw, 16px)", background: "#000" }}>
                 <iframe
                   src={videoEmbedUrl}
                   title={`${item.title || item.name} video`}
@@ -110,47 +110,51 @@ export default function EquipmentDetails() {
           )}
         </div>
         <div>
-          <h1 style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: 700, color: "#111", marginBottom: "18px" }}>{item.title || item.name}</h1>
-          <div style={{ color: "#666", lineHeight: 1.8, marginBottom: "24px", whiteSpace: "pre-line" }}>
+          <h1 style={{ fontSize: "clamp(22px, 5vw, 40px)", fontWeight: 700, color: "#111", marginBottom: "clamp(12px, 3vw, 18px)", lineHeight: 1.2 }}>{item.title || item.name}</h1>
+          <div style={{ color: "#666", lineHeight: 1.8, marginBottom: "clamp(16px, 4vw, 24px)", whiteSpace: "pre-line", fontSize: "clamp(13px, 3vw, 15px)" }}>
             {item.description || "Detailed equipment information will appear here."}
           </div>
-          <div style={{ background: "#f8f8f8", borderRadius: "18px", padding: "18px", marginBottom: "20px" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", paddingBottom: "10px", borderBottom: "1px solid #eee", marginBottom: "10px" }}>
-              <span style={{ color: "#999", fontSize: "12px", fontWeight: 700 }}>ITEM CODE</span>
-              <span style={{ color: "#111", fontWeight: 600 }}>{item.itemCode || "N/A"}</span>
+          <div style={{ background: "#f8f8f8", borderRadius: "clamp(12px, 3vw, 18px)", padding: "clamp(14px, 4vw, 18px)", marginBottom: "clamp(16px, 4vw, 20px)" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", paddingBottom: "clamp(8px, 2vw, 10px)", borderBottom: "1px solid #eee", marginBottom: "clamp(8px, 2vw, 10px)" }}>
+              <span style={{ color: "#999", fontSize: "clamp(11px, 2vw, 12px)", fontWeight: 700 }}>ITEM CODE</span>
+              <span style={{ color: "#111", fontWeight: 600, fontSize: "clamp(12px, 2.5vw, 14px)" }}>{item.itemCode || "N/A"}</span>
             </div>
 
             {/* PRICING SECTION WITH DISCOUNT */}
             {item.price && (
-              <div style={{ paddingBottom: "10px", borderBottom: "1px solid #eee", marginBottom: "10px" }}>
+              <div style={{ paddingBottom: "clamp(8px, 2vw, 10px)", borderBottom: "1px solid #eee", marginBottom: "clamp(8px, 2vw, 10px)" }}>
                 {item.discount && item.discount > 0 ? (
                   <div>
-                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "4px" }}>
-                      <span style={{ color: "#999", fontSize: "12px", fontWeight: 700 }}>ORIGINAL PRICE</span>
-                      <span style={{ color: "#999", fontSize: "12px", fontWeight: 600, textDecoration: "line-through" }}>Rs {(item.price || 0).toFixed(2)}</span>
+                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "clamp(4px, 1vw, 4px)", fontSize: "clamp(11px, 2vw, 12px)" }}>
+                      <span style={{ color: "#999", fontWeight: 700 }}>ORIGINAL PRICE</span>
+                      <span style={{ color: "#999", fontWeight: 600, textDecoration: "line-through" }}>Rs {(item.price || 0).toFixed(2)}</span>
                     </div>
-                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "4px" }}>
-                      <span style={{ color: "#999", fontSize: "12px", fontWeight: 700 }}>DISCOUNT</span>
-                      <span style={{ color: "#ff6600", fontSize: "12px", fontWeight: 700 }}>-{item.discount}%</span>
+                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "clamp(4px, 1vw, 4px)", fontSize: "clamp(11px, 2vw, 12px)" }}>
+                      <span style={{ color: "#999", fontWeight: 700 }}>DISCOUNT</span>
+                      <span style={{ color: "#ff6600", fontWeight: 700 }}>-{item.discount}%</span>
                     </div>
-                    <div style={{ display: "flex", justifyContent: "space-between" }}>
-                      <span style={{ color: "#111", fontSize: "13px", fontWeight: 700 }}>FINAL PRICE</span>
-                      <span style={{ color: "#ff6600", fontSize: "14px", fontWeight: 700 }}>Rs {((item.price || 0) * (1 - (item.discount || 0) / 100)).toFixed(2)}</span>
+                    <div style={{ display: "flex", justifyContent: "space-between", marginTop: "clamp(6px, 1.5vw, 8px)" }}>
+                      <span style={{ color: "#111", fontSize: "clamp(12px, 2.5vw, 13px)", fontWeight: 700 }}>FINAL PRICE</span>
+                      <span style={{ color: "#ff6600", fontSize: "clamp(14px, 3vw, 16px)", fontWeight: 700 }}>Rs {((item.price || 0) * (1 - (item.discount || 0) / 100)).toFixed(2)}</span>
                     </div>
                   </div>
                 ) : (
                   <div style={{ display: "flex", justifyContent: "space-between" }}>
-                    <span style={{ color: "#999", fontSize: "12px", fontWeight: 700 }}>PRICE</span>
-                    <span style={{ color: "#111", fontWeight: 600 }}>Rs {(item.price || 0).toFixed(2)}</span>
+                    <span style={{ color: "#999", fontSize: "clamp(11px, 2vw, 12px)", fontWeight: 700 }}>PRICE</span>
+                    <span style={{ color: "#111", fontWeight: 600, fontSize: "clamp(14px, 3vw, 16px)" }}>Rs {(item.price || 0).toFixed(2)}</span>
                   </div>
                 )}
               </div>
             )}
 
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <span style={{ color: "#999", fontSize: "12px", fontWeight: 700 }}>ORIGIN</span>
-              <span style={{ color: "#111", fontWeight: 600 }}>{item.countryOfOrigin || "N/A"}</span>
+              <span style={{ color: "#999", fontSize: "clamp(11px, 2vw, 12px)", fontWeight: 700 }}>ORIGIN</span>
+              <span style={{ color: "#111", fontWeight: 600, fontSize: "clamp(12px, 2.5vw, 14px)" }}>{item.countryOfOrigin || "N/A"}</span>
             </div>
+          </div>
+
+          <div style={{ marginTop: "clamp(16px, 4vw, 24px)", display: "flex", gap: "clamp(10px, 2vw, 12px)", flexWrap: "wrap" }}>
+            
           </div>
         </div>
       </div>
